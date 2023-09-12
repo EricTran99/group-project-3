@@ -3,8 +3,8 @@
 -- NOTE! If you have used non-SQL datatypes in your design, you will have to change these here.
 
 
--- lists all accidents (203,708 rows)
-CREATE TABLE "ACCIDENT" (
+-- lists all accidents (202,807 rows)
+CREATE TABLE "master_accident_cleaned" (
     -- unique accident numbers
     "ACCIDENT_NO" varchar(20)   NOT NULL,
     -- date accident occurred dd/mm/yyyy
@@ -23,22 +23,10 @@ CREATE TABLE "ACCIDENT" (
     "DCA_CODE" int   NOT NULL,
     -- Description for DCA_CODE eg. RIGHT NEAR (INTERSECTIONS ONLY)
     "DCA_Description" varchar(70)   NOT NULL,
-    -- map directory eg. MEL (contains blanks)
-    "DIRECTORY" varchar   NOT NULL,
-    -- edition of map eg. 40 (contains blanks)
-    "EDITION" int   NOT NULL,
-    -- page of map eg. 91A (contains blanks)
-    "PAGE" varchar(5)   NOT NULL,
-    -- map grid reference on x axis eg G, H (contains blanks)
-    "GRID_REFERENCE_X" varchar(5)   NOT NULL,
-    -- map grid reference on y axis eg 7, 8 (contains blanks)
-    "GRID_REFERENCE_Y" varchar(5)   NOT NULL,
     -- light condition at ttime of accident (1 to 9)
     "LIGHT_CONDITION" int   NOT NULL,
     -- description of LIGHT_CONDITION eg. day, dark street no lights etc
     "Light_Condition_Description" varchar(20)   NOT NULL,
-    -- pinpoint location on map
-    "NODE_ID" int   NOT NULL,
     -- number of vehicles involved in the accident (1 tp 21)
     "NO_VEHICLE" int   NOT NULL,
     -- number of people involved in the accident (1 to 97)
@@ -61,71 +49,39 @@ CREATE TABLE "ACCIDENT" (
     "SEVERITY" int   NOT NULL,
     -- speed limit where accident occurred eg. 60, 100
     "SPEED_ZONE" int   NOT NULL,
-    -- not type I, N or O (contains blanks and N/A)
-    "NODE_TYPE" varchar(3)   NOT NULL,
-    -- Local Government Area name (contains blanks and N/A)
+    "NODE_ID" int   NOT NULL,
+    -- I, N, O
+    "NODE_TYPE" varchar(1)   NOT NULL,
+    -- Local Government Area name
     "LGA_NAME" varchar(50)   NOT NULL,
-    -- Local Government Area name grouped for some (contains blanks and N/A)
-    "LGA_NAME_ALL" varchar(50)   NOT NULL,
-    -- Region in Victoria eg. METROPOLITAN SOUTH EAST REGION (contains blanks and N/A)
+    -- Region in Victoria eg. METROPOLITAN SOUTH EAST REGION
     "REGION_NAME" varchar(20)   NOT NULL,
     -- Location category in Victoria eg. MELB_URBAN, RURAL_VICTORIA
     "DEG_URBAN_NAME" varchar(20)   NOT NULL,
-    -- accident latitude location (contains N/A)
+    -- accident latitude location
     "Lat" int   NOT NULL,
-    -- accident longitude location (contains N/A)
+    -- accident longitude location
     "Long" int   NOT NULL,
-    CONSTRAINT "pk_ACCIDENT" PRIMARY KEY (
+    -- postcode of accident location
+    "POSTCODE_NO" int   NOT NULL,
+    -- description of ATMOSPH_COND eg. Clear, Smoke, Snowing, Fog
+    "Atmosph_Cond_Desc" varchar(10)   NOT NULL,
+    -- description of SURFACE_COND eg. Dry, Icy
+    "Surface_Cond_Desc" varchar(10)   NOT NULL,
+    CONSTRAINT "pk_master_accident_cleaned" PRIMARY KEY (
         "ACCIDENT_NO"
      )
 );
 
--- lists atmospheric conditions for each accident (206,958 rows)
-CREATE TABLE "ATMOSPHERIC_COND" (
-    -- not unique accident numbers
-    "ACCIDENT_NO" varchar(20)   NOT NULL,
-    -- atmospheric conditions (1 to 9)
-    "ATMOSPH_COND" int   NOT NULL,
-    -- sequence of atmospheric conditions for accident (0 t0 4) ie. can have more than one
-    "ATMOSPH_COND_SEQ" int   NOT NULL,
-    -- description of ATMOSPH_COND eg. Clear, Smoke, Snowing, Fog
-    "Atmosph_Cond_Desc" varchar(10)   NOT NULL
-);
-
--- lists the location of the accidents (221,787 rows)
-CREATE TABLE "NODE" (
-    -- not unique accident numbers
-    "ACCIDENT_NO" varchar(20)   NOT NULL,
-    "NODE_ID" int   NOT NULL,
-    -- I, N, O (contains blanks)
-    "NODE_TYPE" varchar(1)   NOT NULL,
-    "VICGRID94_X" int   NOT NULL,
-    "VICGRID94_Y" int   NOT NULL,
-    -- Local Government Area name (contains blanks and N/A)
-    "LGA_NAME" varchar(50)   NOT NULL,
-    -- Local Government Area name grouped for some (contains blanks and N/A)
-    "LGA_NAME_ALL" varchar(50)   NOT NULL,
-    -- Region in Victoria eg. METROPOLITAN SOUTH EAST REGION (contains blanks and N/A)
-    "REGION_NAME" varchar(20)   NOT NULL,
-    -- Location category in Victoria eg. MELB_URBAN, RURAL_VICTORIA
-    "DEG_URBAN_NAME" varchar(20)   NOT NULL,
-    -- accident latitude location (contains N/A)
-    "Lat" int   NOT NULL,
-    -- accident longitude location (contains N/A)
-    "Long" int   NOT NULL,
-    -- postcode of accident location
-    "POSTCODE_NO" int   NOT NULL
-);
-
--- lists all the people involved in the accidents (490,949 rows)
--- NOTE: need to create key ACCIDENT_NO and VEHICLE_ID
-CREATE TABLE "PERSON" (
+-- lists all the people involved in the accidents (490,948 rows)
+CREATE TABLE "person_cleaned" (
     -- not unique accident numbers
     "ACCIDENT_NO" varchar(20)   NOT NULL,
     -- person in accident (1-95) (A-U)
     "PERSON_ID" varchar(5)   NOT NULL,
-    -- vehicle in accident (A-U) (Contains blanks)
+    -- vehicle in accident (A-U)  not unique (contains blanks)
     "VEHICLE_ID" varchar(5)   NOT NULL,
+    "ACCIDENT_VEHICLE_ID" varchar(20)   NOT NULL,
     -- sex of person in accident (F, M, U) (Contains blanks)
     "SEX" varchar(10)   NOT NULL,
     -- age of person in accident (Contains blanks)
@@ -156,25 +112,14 @@ CREATE TABLE "PERSON" (
     "EJECTED_CODE" int   NOT NULL
 );
 
--- lists road surface conditions at time of accident (205,030 rows)
-CREATE TABLE "ROAD_SURFACE_COND" (
+-- lists all the vehicles involved in an accident (365,242 rows)
+CREATE TABLE "vehicle_cleaned" (
     -- not unique accident numbers
     "ACCIDENT_NO" varchar(20)   NOT NULL,
-    -- surface condition at time of accident (1 to 9)
-    "SURFACE_COND" int   NOT NULL,
-    -- description of SURFACE_COND eg. Dry, Icy
-    "Surface_Cond_Descr" varchar(10)   NOT NULL,
-    -- sequence of surface condition (0 to 3) can be more than one per accident
-    "SURFACE_COND_SEQ" int   NOT NULL
-);
-
--- lists vehicles involved in accident (365,242 rows)
--- NOTE: need to create a key ACCIDENT_NO and VEHICLE_ID
-CREATE TABLE "VEHICLE" (
-    -- not unique accident numbers
-    "ACCIDENT_NO" varchar(20)   NOT NULL,
-    -- (A to U)
+    -- (A to U) not unique
     "VEHICLE_ID" varchar(1)   NOT NULL,
+    -- unique
+    "ACCIDENT_VEHICLE_ID" varchar(20)   NOT NULL,
     -- year vehicle manufactured YYYY (contains blanks, 0 and 4)
     "VEHICLE_YEAR_MANUF" date   NOT NULL,
     -- (1 to 8) (contains blanks)
@@ -247,26 +192,23 @@ CREATE TABLE "VEHICLE" (
     "TRAFFIC_CONTROL" int   NOT NULL,
     -- description of TRAFFIC_CONTROL
     "Traffic_Control_Descr" varchar(20)   NOT NULL,
-    CONSTRAINT "pk_VEHICLE" PRIMARY KEY (
-        "VEHICLE_ID"
-     )
+    CONSTRAINT "pk_vehicle_cleaned" PRIMARY KEY (
+        "VEHICLE_ID","ACCIDENT_VEHICLE_ID"
+     ),
+    CONSTRAINT "uc_vehicle_cleaned_VEHICLE_DCA_CODE" UNIQUE (
+        "VEHICLE_DCA_CODE"
+    )
 );
 
-ALTER TABLE "ATMOSPHERIC_COND" ADD CONSTRAINT "fk_ATMOSPHERIC_COND_ACCIDENT_NO" FOREIGN KEY("ACCIDENT_NO")
-REFERENCES "ACCIDENT" ("ACCIDENT_NO");
+ALTER TABLE "person_cleaned" ADD CONSTRAINT "fk_person_cleaned_ACCIDENT_NO" FOREIGN KEY("ACCIDENT_NO")
+REFERENCES "master_accident_cleaned" ("ACCIDENT_NO");
 
-ALTER TABLE "NODE" ADD CONSTRAINT "fk_NODE_ACCIDENT_NO" FOREIGN KEY("ACCIDENT_NO")
-REFERENCES "ACCIDENT" ("ACCIDENT_NO");
+ALTER TABLE "person_cleaned" ADD CONSTRAINT "fk_person_cleaned_VEHICLE_ID" FOREIGN KEY("VEHICLE_ID")
+REFERENCES "vehicle_cleaned" ("VEHICLE_ID");
 
-ALTER TABLE "PERSON" ADD CONSTRAINT "fk_PERSON_ACCIDENT_NO" FOREIGN KEY("ACCIDENT_NO")
-REFERENCES "ACCIDENT" ("ACCIDENT_NO");
+ALTER TABLE "vehicle_cleaned" ADD CONSTRAINT "fk_vehicle_cleaned_ACCIDENT_NO" FOREIGN KEY("ACCIDENT_NO")
+REFERENCES "master_accident_cleaned" ("ACCIDENT_NO");
 
-ALTER TABLE "PERSON" ADD CONSTRAINT "fk_PERSON_VEHICLE_ID" FOREIGN KEY("VEHICLE_ID")
-REFERENCES "VEHICLE" ("VEHICLE_ID");
-
-ALTER TABLE "ROAD_SURFACE_COND" ADD CONSTRAINT "fk_ROAD_SURFACE_COND_ACCIDENT_NO" FOREIGN KEY("ACCIDENT_NO")
-REFERENCES "ACCIDENT" ("ACCIDENT_NO");
-
-ALTER TABLE "VEHICLE" ADD CONSTRAINT "fk_VEHICLE_ACCIDENT_NO" FOREIGN KEY("ACCIDENT_NO")
-REFERENCES "ACCIDENT" ("ACCIDENT_NO");
+ALTER TABLE "vehicle_cleaned" ADD CONSTRAINT "fk_vehicle_cleaned_ACCIDENT_VEHICLE_ID" FOREIGN KEY("ACCIDENT_VEHICLE_ID")
+REFERENCES "person_cleaned" ("ACCIDENT_VEHICLE_ID");
 
