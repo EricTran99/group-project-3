@@ -97,7 +97,7 @@ At the beginning, we used Jupyter Notebook to import six CSV files, that were cl
 **Our Exploratory Analysis Scripts**:
   - Charts_Road_Fatalities.ipynb
   - Map_Road_Fatalities.ipynb
-  - 
+    
 **Exploratory Analysis Images Created**:
   - all_age_barchart.png
   - all_age_horizontal_barchart.png
@@ -118,7 +118,7 @@ NEED TO ADD HERE
 
 ### Part 2: Create the Project Database and Import Data
 
-In this section, using QuickDBD, we sketched an ERD to form a table schema of the three CSV files we created in Part 1 above. We identified the dependencies between each table (primary and foreign keys), their relationships (one-one/one-many, many-one) and the relevant datatypes for each column. We created a SQL database (crowdfunding_db) in Postgres through pgAdmin. Table Schema sql file generated through our ERD diagram in QuickDBD was uploaded to create table structure and dependencies. csv files generated in Part 1 were imported into relevant tables using python code using python SQLAlchemy in Juypter Notebook. Select queries were run both in pgAdmin and python.
+In this section, using QuickDBD, we sketched an ERD to form a table schema of the three CSV files we created in Part 1 above. We identified the dependencies between each table (primary and foreign keys), their relationships (one-one/one-many, many-one) and the relevant datatypes for each column. We created a SQL database (project_db) in Postgres through pgAdmin. Table Schema sql file generated through our ERD diagram in QuickDBD was uploaded to create table structure and dependencies. csv files generated in Part 1 were imported into relevant tables using python code using python SQLAlchemy in Juypter Notebook. Select queries were run both in pgAdmin and python.
 
 **Files We Created:**
  - Schema: QuickDBD-VIC ROAD ACCIDENTS DATA 1_1_2006 to 1_11_2020.sql
