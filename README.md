@@ -59,7 +59,7 @@ In this scenario, our team has built an interactive web application, displaying 
 ## About
 ### Part 1: Clean Data and Perform Exploratory Analysis
 
-At the beginning, we used Jupyter Notebook to import six CSV files, that were cleaned, manipulatedand merged to create three dataframes. The dataframes were then exported into csv files. Exploratory Analysis was performed to gain an understanding of the data and possible charts and maps to display on the final web application. The key insights we discovered were:
+At the beginning, we used Jupyter Notebook to import six CSV files, that were cleaned, manipulated and merged to create three dataframes. The dataframes were then exported into csv files. Exploratory Analysis was performed to gain an understanding of the data and possible charts and maps to display on the final web application. The key insights we discovered were:
 1. With the exception of 2020, the number of road accidents has not changed since 2006, indicating that more needs to be done to improve this.
 2. Most fatal road accidents occur in rural victoria, whilst the majority of non fatal road accidents occur in urban settings.
 3. Age bracket 30-39 persons are most likely to be in fatal and non fatal accidents
@@ -140,12 +140,14 @@ In this section, using QuickDBD, we sketched an ERD to form a table schema of th
   - Select_statements.sql
     
 ### Part 3: Create the Flask Powered APIs
-  
+ADD STEPS HERE
+
 **Tools/Libraries We Imported:**
    - pandas library: for data manipulation and analysis
    - sqlalchemy library: provides the SQL toolkit and Object-Relational Mapper (ORM) functionality. The create_engine function is to create a database engine to connect with the database in order to interact with the database, and perform operations such as SQL queries
 
 ### Part 4: Create the Web Application
+ADD STEPS HERE
 
 ## Getting Started
 
