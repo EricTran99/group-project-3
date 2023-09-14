@@ -1,0 +1,80 @@
+body {
+  padding: 0;
+  margin: 0;
+  background-image: url('images/Driving-road-in-Victoria.jpg'); /* image to appear in background */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  font-family: Courier New, sans-serif;
+}
+
+header {
+  color: hsl(0, 0%, 100%);
+  padding: 5px 5px 5px 15px;
+  text-align: left;
+}
+
+p {
+  color: hsl(0, 0%, 100%);
+  padding: 5px 5px 5px 15px;
+  text-align: left;
+}
+
+.url-link {
+  position: absolute;
+  top: 10px; 
+  right: 10px; 
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 10px;
+  border-radius: 5px;
+  text-align: right;
+}
+
+#map-container {
+  position: relative;
+}
+
+#map {
+  width: 48%; 
+  height: 50vh; 
+  float: left;
+  margin: 10px 10px 10px 10px; /* Add margin to create space from the right edge */
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+#map-title {
+  position: absolute;
+  bottom: 10px; 
+  left: 10px; 
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 10px;
+  font-size: 18px;
+  border-radius: 5px;
+}
+
+#charts_right {
+  width: 48%; 
+  height: 200vh; 
+  float: right;
+  margin: 10px 10px 5px 10px; /* Add margin to create space from the right edge */
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#charts_left {
+  width: 48%; 
+  height: 85vh; 
+  float: left;
+  margin: 10px 10px 10px 10px; /* Add margin to create space from the left edge */
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.chart {
+  width: 95%; /* the width for each chart */
+  height: calc(45% - 10px); /* the height for chart and margins */
+  margin: 5px;
+  background-color: #fff; /* background color for charts */
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* shadow to charts */
+}
+
