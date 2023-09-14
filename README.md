@@ -142,6 +142,7 @@ In this section, using QuickDBD, we sketched an ERD to form a table schema of th
   - To create and load data to SQL Database: to_sql.py
 
 **Tables loaded into project_db:**
+
 ![Project_db screenshot](https://github.com/Nisloen/group-project-3/assets/132874272/677cc1da-07d3-4a3f-843a-3b232b0d806d)
 
 **Tools/Libraries We Imported:**
