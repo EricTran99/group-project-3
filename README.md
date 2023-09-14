@@ -4,6 +4,10 @@
 
 In this scenario, our team has built an interactive web application, displaying various maps and charts representing Victorian road accidents from 2006 to 2020. This involved the creation of an ETL (Extract, Transform, Load) Pipeline. Crash Data was sourced from the DataVIC website (https://discover.data.vic.gov.au/dataset/crash-stats-data-extract) in the form of CSV files. The CSV files were cleaned and exploratory analysis was performed in Jupyter Notebook. An Entity Relationship Diagram (ERD) was created, along with a table schema, before uploading the data into a Postgres database. Python Flash-powered APIs were created. Finally, the web application was built using HTML, CSS and Javascript coding.
 
+
+PLACEHOLDER DASHBOARD IMAGE
+
+
 **Repository Folders and Contents:**
 - Cleaned_Datasets:
   - accident_cleaned.csv
