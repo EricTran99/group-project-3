@@ -47,6 +47,15 @@ In this scenario, our team has built an interactive web application, displaying 
 - Exploratory_Analysis_Scripts:
   - Charts_Road_Fatalities.ipynb
   - Map_Road_Fatalities.ipynb
+- Other:
+  - crashstats_user_guide_and_appendices.pdf
+- static:
+  - charts.js
+  - cluster.js
+  - style.css
+- api.py
+- index.html
+- to_sql.py
 
 
 ## Table of Contents
@@ -118,14 +127,10 @@ NEED TO ADD HERE
 
 ### Part 2: Create the Project Database and Import Data
 
-In this section, using QuickDBD, we sketched an ERD to form a table schema of the three CSV files we created in Part 1 above. We identified the dependencies between each table (primary and foreign keys), their relationships (one-one/one-many, many-one) and the relevant datatypes for each column. We created a SQL database (project_db) in Postgres through pgAdmin. Table Schema sql file generated through our ERD diagram in QuickDBD was uploaded to create table structure and dependencies. csv files generated in Part 1 were imported into relevant tables using python code using python SQLAlchemy in Juypter Notebook. Select queries were run both in pgAdmin and python.
-
-**Files We Created:**
- - Schema: QuickDBD-VIC ROAD ACCIDENTS DATA 1_1_2006 to 1_11_2020.sql
- - ERD Diagram: QuickDBD-VIC ROAD ACCIDENTS DATA 1_1_2006 to 1_11_2020.png
+In this section, using QuickDBD, we sketched an ERD to form a table schema of the three CSV files we created in Part 1 above. We identified the dependencies between each table (primary and foreign keys), their relationships (one-one/one-many, many-one) and the relevant datatypes for each column. We created a SQL database (project_db) in Postgres through pgAdmin. CSV files generated in Part 1 were imported into relevant tables using python code (to_sql.py) using python SQLAlchemy in Visual Studio Code. In order to create the connection between python and postgres, we installed psycopg2 (PostgreSQL adapter).
 
 **ERD Diagram:**
-
+ - ERD Diagram: QuickDBD-VIC ROAD ACCIDENTS DATA 1_1_2006 to 1_11_2020.png
 ![QuickDBD-VIC ROAD ACCIDENTS DATA 1_1_2006 to 1_11_2020](https://github.com/Nisloen/group-project-3/assets/132874272/30eae2a9-fd5c-4002-a01e-f80679369893)
 
 **Resource Files We Used:**
@@ -133,18 +138,24 @@ In this section, using QuickDBD, we sketched an ERD to form a table schema of th
   - person_cleaned.csv
   - vehicle_cleaned.csv
 
-**Our Jupyter Notebook Python Script:**
-  - Populating_crowdfunding_db_tables.ipynb
+**Our Python Script:**
+  - To create and load data to SQL Database: to_sql.py
 
-**Our SQL Script with SELECT statement used in pgAdmin:**
-  - Select_statements.sql
-    
-### Part 3: Create the Flask Powered APIs
-ADD STEPS HERE
+**Tables loaded into project_db:**
+![Project_db screenshot](https://github.com/Nisloen/group-project-3/assets/132874272/677cc1da-07d3-4a3f-843a-3b232b0d806d)
 
 **Tools/Libraries We Imported:**
    - pandas library: for data manipulation and analysis
    - sqlalchemy library: provides the SQL toolkit and Object-Relational Mapper (ORM) functionality. The create_engine function is to create a database engine to connect with the database in order to interact with the database, and perform operations such as SQL queries
+
+### Part 3: Create the Flask Powered APIs
+We then created three APIs using python code (api.py) sourcing the data in project_db. In order for the APIs to run, the version of SQLalchemy had to be 1.4.39.
+
+**Tools/Libraries We Imported:**
+   - pandas library: for data manipulation and analysis
+   - sqlalchemy library: provides the SQL toolkit and Object-Relational Mapper (ORM) functionality. The create_engine function is to create a database engine to connect with the database in order to interact with the database, and perform operations such as SQL queries
+   - flask library: to create API and convert the data in SQL database to json format
+   - numpy library: used for numeric computation
 
 ### Part 4: Create the Web Application
 ADD STEPS HERE
@@ -152,18 +163,17 @@ ADD STEPS HERE
 ## Getting Started
 
 **Programs/software we used:**
- - Jupyter Notebook: used for python coding in sections.
+ - Visual Studio Code: used for python coding.
  - Microsoft Excel: to view csv files. Should be available by default on all PCs.
  - QuickDBD: to sketch an ERD of the tables for the data contained in the csv files. (http://www.quickdatabasediagrams.com/) No need to register, diagram can be generated on the website for free.
  - PostgreSQL: is a relational database management system (RDBMS). An RDBMS consists of tables and their predefined relationships. Postgres stores the data. Refer to "Installing" section below.
  - pgAdmin: The pgAdmin tool functions as the window into the database. It's where queries are written, run and then the results of running them are reviewed. pgAdmin provides access to that data. Refer to "Installing" section below.
+ - Chrome: to view APIs and final web application.
 
 
-**To open the files .ipynb files in Juypter Notebook:**
+**To activate dev environment:**
 - Open Anaconda Prompt
 - Activate dev environment, type 'conda activate dev'
-- Navigate to the folder where repository is saved on local drive
-- Open Jupyter Notebook, type 'Jupyter Notebook'
 
 ## Installing
 
@@ -187,5 +197,5 @@ ADD STEPS HERE
 
 ## Contributing
 
-- How to import csv data to sql: https://www.askpython.com/python-modules/pandas/pandas-to-sql
+- ???
 
