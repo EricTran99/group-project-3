@@ -35,7 +35,6 @@ PLACEHOLDER DASHBOARD IMAGE
 - ERD:
   - QuickDBD-VIC ROAD ACCIDENTS DATA 1_1_2006 to 1_11_2020.pdf
   - QuickDBD-VIC ROAD ACCIDENTS DATA 1_1_2006 to 1_11_2020.png
-  - QuickDBD-VIC ROAD ACCIDENTS DATA 1_1_2006 to 1_11_2020.sql
 - Exploratory_Analysis_Output:
   - all_age_barchart.png
   - all_age_horizontal_barchart.png
@@ -202,5 +201,5 @@ ADD STEPS HERE
 
 ## Contributing
 
-- ???
+- Highcharts.js website: (https://api.highcharts.com/highcharts/)
 
