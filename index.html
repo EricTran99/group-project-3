@@ -1,70 +1,112 @@
 <!DOCTYPE html>
 <html lang="en-us">
-  <head>
+<head>
     <meta charset="UTF-8">
     <title>Victorian Road Crashes App</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    
     <!-- Leaflet JavaScript code -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-    crossorigin=""></script>
-
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    
     <!-- D3 library -->
     <script src="https://d3js.org/d3.v7.min.js"></script>
-
+    
     <!-- Marker cluster JavaScript code -->
-    <script type="text/javascript" src="https://unpkg.com/leaflet.markercluster@1.0.3/dist/leaflet.markercluster.js"></script>
-
+    <script type="text/javascript"
+        src="https://unpkg.com/leaflet.markercluster@1.0.3/dist/leaflet.markercluster.js"></script>
+    
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-    crossorigin=""/>
-
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    
+    <!-- Plotly library for line chart-->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    
+    <!-- highcharts.js library for line chart-->
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    
     <!-- Marker cluster CSS -->
-    <link rel="stylesheet" type="text/css" href="https://unpkg.com/leaflet.markercluster@1.0.3/dist/MarkerCluster.css">
-    <link rel="stylesheet" type="text/css" href="https://unpkg.com/leaflet.markercluster@1.0.3/dist/MarkerCluster.Default.css">
-
+    <link rel="stylesheet" type="text/css"
+        href="https://unpkg.com/leaflet.markercluster@1.0.3/dist/MarkerCluster.css">
+    <link rel="stylesheet" type="text/css"
+        href="https://unpkg.com/leaflet.markercluster@1.0.3/dist/MarkerCluster.Default.css">
+    
     <!-- Our CSS -->
     <link rel="stylesheet" type="text/css" href="static/style.css">
+    
+    <!-- Bootstrap JS -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+  <div class="container-fluid">
+      <!-- Header -->
+      <div class="row">
+          <div class="col-xs-12">
+              <header>
+                  <h1>Victorian Road Accidents 2006 to 2020</h1>
+              </header>
+          </div>
+      </div>
 
-  </head>
-  <body>
-    <header>
-      <h1>Victorian Road Accidents 2006 to 2020</h1>
-    </header>
-  
-        <!-- URL Link -->
-        <div class="url-link">  
-          <a href="https://discover.data.vic.gov.au/dataset/crash-stats-data-extract" target="_blank">
-            Visit Data Vic Website For Data Resources
-          </a>
+      <!-- Purpose of Webpage -->
+      <div class="row">
+        <div class="col-md-6 text-left"> <!-- Use col-md-* for medium and large screens -->
+            <div class="purpose">
+                <p>The underlying data for these visualisations have been sourced from the DATA VIC Website.
+                  The time period covered is from the 1/1/2006 to 1/11/2020 inclusive.</p>
+            </div>
         </div>
-    
-        <!-- Purpose of Webpage -->
-        <div class="purpose">
-          <p>This webpage provides data and visualizations of Victorian road accidents from 2006 to 2020 to help users analyze and understand accident trends and statistics.</p>
+
+        <!-- URL Button (Top Right) -->
+        <div class="col-md-4 text-right"> <!-- Use col-md-* for medium and large screens -->
+            <div class="url-button">
+                <a href="https://discover.data.vic.gov.au/dataset/crash-stats-data-extract" target="_blank" class="btn btn-primary">
+                    Visit DATA VIC Website For Data Resources
+                </a>
+            </div>
         </div>
-    
-        <!-- Maps and placeholders -->
-        <div class="maps-and-placeholders">
-          <!-- Placeholder for maps -->
-          <div id="map"></div>
-    
-          <!-- Placeholder for charts -->
-          <div id="charts_right">
-            <!-- Chart 1 placeholder -->
-            <div class="chart" id="bar_chart"></div>
+    </div>
+
+<!-- Maps and Charts container -->
+<div class="container-fluid">
+  <div class="row">
+      <!-- Map and Line Chart Container -->
+      <div class="col-md-6">
+          <!-- Map Container -->
+          <div class="row">
+              <div class="col-md-12">
+                  <div id="map-title">Road Accidents By Location</div>
+                  <div id="map"></div>
+              </div>
           </div>
-    
-          <div id="charts_left">
-            <!-- Chart 2 placeholder -->
-            <div class="chart" id="line_chart"></div>
+          
+          <!-- Line Chart Container -->
+          <div class="row">
+              <div class="col-md-12">
+                  <div id="line-chart-title">Road Accidents Over Time</div>
+                  <div class="chart" id="LineChart"></div>
+              </div>
           </div>
-        </div>
-    
-        <!-- Our JavaScript -->
-        <script type="text/javascript" src="static/cluster.js"></script>
-    
-      </body>
-    </html>
+      </div>
+      
+      <!-- Bar Chart Container -->
+      <div class="col-md-6">
+          <div id="bar-chart-title">Road Accidents By Category</div>
+          <div class="chart" id="BarChart"></div>
+      </div>
+  </div>
+</div>
+
+  <!-- Our JavaScript -->
+  <script type="text/javascript" src="static/cluster.js"></script>
+  <script type="text/javascript" src="static/linecharts.js"></script>
+  <script src="./static/charts.js"></script>
+</body>
+</html>

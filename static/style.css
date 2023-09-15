@@ -1,7 +1,7 @@
 body {
   padding: 0;
   margin: 0;
-  background-image: url('images/Driving-road-in-Victoria.jpg'); /* image to appear in background */
+  background-image: url('images/Driving-road-in-Victoria.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -10,71 +10,87 @@ body {
 
 header {
   color: hsl(0, 0%, 100%);
-  padding: 5px 5px 5px 15px;
-  text-align: left;
+  padding: 15px;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 p {
   color: hsl(0, 0%, 100%);
-  padding: 5px 5px 5px 15px;
+  padding: 15px;
   text-align: left;
 }
 
-.url-link {
+.url-button {
   position: absolute;
-  top: 10px; 
-  right: 10px; 
-  background-color: rgba(255, 255, 255, 0.7);
-  padding: 10px;
-  border-radius: 5px;
+  top: 20px;
+  right: 20px;
   text-align: right;
 }
 
-#map-container {
-  position: relative;
-}
-
 #map {
-  width: 48%; 
-  height: 50vh; 
-  float: left;
-  margin: 10px 10px 10px 10px; /* Add margin to create space from the right edge */
+  width: 100%;
+  height: 40vh;
+  margin: 10px 0;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
 
 #map-title {
-  position: absolute;
-  bottom: 10px; 
-  left: 10px; 
-  background-color: rgba(255, 255, 255, 0.7);
-  padding: 10px;
-  font-size: 18px;
-  border-radius: 5px;
+  text-align: center;
+  margin-top: 10px;
+  font-size: 24px;
+  color: #fffdfd;
+  background-color: rgba(0, 0, 0, 0.7);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
 }
 
-#charts_right {
-  width: 48%; 
-  height: 200vh; 
-  float: right;
-  margin: 10px 10px 5px 10px; /* Add margin to create space from the right edge */
-  display: flex;
-  flex-wrap: wrap;
+#line-chart-title {
+  text-align: center;
+  font-size: 24px;
+  margin-top: 10px;
+  color: #fffdfd;
+  background-color: rgba(0, 0, 0, 0.7);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
 }
 
-#charts_left {
-  width: 48%; 
-  height: 85vh; 
-  float: left;
-  margin: 10px 10px 10px 10px; /* Add margin to create space from the left edge */
+#bar-chart-title {
+  text-align: center;
+  font-size: 24px;
+  margin-top: 10px;
+  color: #fffdfd;
+  background-color: rgba(0, 0, 0, 0.7);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
+}
+
+/* Container for maps and charts */
+.row {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+/* Line Chart styling */
+.line-chart-container {
+  flex: 0 0 calc(50% - 10px); /* 50% width with margin in between */
+  margin: 0 5px;
 }
 
 .chart {
-  width: 95%; /* the width for each chart */
-  height: calc(45% - 10px); /* the height for chart and margins */
-  margin: 5px;
-  background-color: #fff; /* background color for charts */
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* shadow to charts */
+  background-color: rgba(255, 255, 255, 0.8);
+  width: 100%;
+  height: 35vh;
+  margin: 10px 0;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
 
+/* Bar Chart styling */
+.bar-chart-container {
+  flex: 0 0 calc(50% - 10px); /* 50% width with margin in between */
+  margin: 0 5px;
+}
+
+#BarChart {
+  height: 75vh;
+  margin-top: 10px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
