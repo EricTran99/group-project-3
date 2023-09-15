@@ -97,9 +97,23 @@
       </div>
       
       <!-- Bar Chart Container -->
+      <div class="container">
+        <div class="row">
+          <div class="col-md-2">
+            <div class="well">
+              <h5>Choose which feature and year you would like to view:</h5>
+              <select id="selDatasetFeat" onchange="optionChanged(this.value)"></select>
+              <select id="selDatasetYear" onchange="optionChanged(this.value)"></select>
+            </div>
+          </div>
+          <div class="col-md-5">
+            <div id="bar"></div>
+          </div>
+        </div>
+      </div>
       <div class="col-md-6">
           <div id="bar-chart-title">Road Accidents By Category</div>
-          <div class="chart" id="BarChart"></div>
+          <div class="chart" id="bar"></div>
       </div>
   </div>
 </div>

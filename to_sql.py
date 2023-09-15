@@ -19,11 +19,19 @@ accident = accident[['ACCIDENT_NO','ACCIDENTDATE','ACCIDENTTIME','Accident_Type_
                      ,'SPEED_ZONE','LGA_NAME','REGION_NAME','DEG_URBAN_NAME','Lat','Long','Atmosph_Cond_Desc',
                      'Surface_Cond_Desc']]
 
-vehicle = vehicle[['ACCIDENT_VEHICLE_ID','VEHICLE_BODY_STYLE','VEHICLE_MAKE','VEHICLE_MODEL','Vehicle Type Desc']]
+year = pd.to_datetime(accident['ACCIDENTDATE'],dayfirst=True).dt.year
+accident['year']=year
 
+id_year = accident[['ACCIDENT_NO','year']]
+# Adding year column so the table can be groupedby year in the api.py file
 
-person = person[['ACCIDENT_VEHICLE_ID','SEX','Age_Group','Road_User_Type_Desc']]
+vehicle = vehicle[['ACCIDENT_NO','VEHICLE_BODY_STYLE','VEHICLE_MAKE','VEHICLE_MODEL','Vehicle Type Desc']]
 
+vehicle = vehicle.merge(id_year,on='ACCIDENT_NO')
+
+person = person[['ACCIDENT_NO','SEX','Age_Group','Road_User_Type_Desc']]
+
+person = person.merge(id_year,on='ACCIDENT_NO')
 
 # Create a postgres database and call it project_db
 # Making connection to postgresql db

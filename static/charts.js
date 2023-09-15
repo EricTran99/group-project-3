@@ -1,7 +1,7 @@
-const url = "http://127.0.0.1:5000/api/v1.0/counts"
+const url2 = "http://127.0.0.1:5000/api/v1.0/counts"
 
 function BarChart(input) {
-    d3.json(url).then(function(data) {
+    d3.json(url2).then(function(data) {
         let year = input[0];
         let option = input[1];
         let Data = data[0]
