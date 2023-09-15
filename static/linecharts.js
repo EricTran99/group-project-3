@@ -34,25 +34,35 @@ function createLineChart(xData, yData, yDataNonFatal, yDataFatal) {
         style: {
           fontSize: '12px'
         }
-      }
+      },
+      min: 0,  // Set the minimum value for the Y-axis
+      max: 16000
     },
     legend: {
       itemStyle: {
         fontSize: '12px'
       }
     },
+    tooltip: {
+      style: {
+        fontSize: '12px' // Adjust the font size as needed
+      }
+    },
     series: [
       {
         name: 'All Accidents',
-        data: yData
+        data: yData,
+        color: 'orange'
       },
       {
         name: 'Non-Fatal Accidents',
-        data: yDataNonFatal
+        data: yDataNonFatal,
+        color:'green'
       },
       {
         name: 'Fatal Accidents',
-        data: yDataFatal
+        data: yDataFatal,
+        color:'red'
       }
     ]
   });

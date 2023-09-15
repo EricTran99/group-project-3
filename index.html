@@ -57,7 +57,7 @@
 
       <!-- Purpose of Webpage -->
       <div class="row">
-        <div class="col-md-6 text-left"> <!-- Use col-md-* for medium and large screens -->
+        <div class="col-md-6 text-left">
             <div class="purpose">
                 <p>The underlying data for these visualisations have been sourced from the DATA VIC Website.
                   The time period covered is from the 1/1/2006 to 1/11/2020 inclusive.</p>
@@ -65,7 +65,7 @@
         </div>
 
         <!-- URL Button (Top Right) -->
-        <div class="col-md-4 text-right"> <!-- Use col-md-* for medium and large screens -->
+        <div class="col-md-4 text-right">
             <div class="url-button">
                 <a href="https://discover.data.vic.gov.au/dataset/crash-stats-data-extract" target="_blank" class="btn btn-primary">
                     Visit DATA VIC Website For Data Resources
@@ -97,26 +97,20 @@
       </div>
       
       <!-- Bar Chart Container -->
-      <div class="container">
-        <div class="row">
-          <div class="col-md-2">
-            <div class="well">
-              <h5>Choose which feature and year you would like to view:</h5>
-              <select id="selDatasetFeat" onchange="optionChanged(this.value)"></select>
-              <select id="selDatasetYear" onchange="optionChanged(this.value)"></select>
-            </div>
-          </div>
-          <div class="col-md-5">
-            <div id="bar"></div>
-          </div>
-        </div>
-      </div>
+
       <div class="col-md-6">
           <div id="bar-chart-title">Road Accidents By Category</div>
           <div class="chart" id="bar"></div>
+              <div class="col-md-10">
+                <div class="well">
+                  <h5>Choose which <b><u>measure</u></b> and <b><u>year</u></b> you would like to view:</h5>
+                  <select id="selDatasetFeat" onchange="optionChanged(this.value)"></select>
+                  <select id="selDatasetYear" onchange="optionChanged(this.value)"></select>
+                </div>
+              </div>
+          </div>
+          </div>
       </div>
-  </div>
-</div>
 
   <!-- Our JavaScript -->
   <script type="text/javascript" src="static/cluster.js"></script>
