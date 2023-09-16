@@ -1,12 +1,12 @@
-const url = "http://127.0.0.1:5000/api/v1.0/counts"
+const url2 = "http://127.0.0.1:5000/api/v1.0/counts"
 
 function BarChart(input) {
-    d3.json(url).then(function(data) {
+    d3.json(url2).then(function(data) {
         let year = input[0];
         let option = input[1];
         let Data = data[0]
         let feature_data=''
-        if (option=='DEGS'){
+        if (option=='Locality Type'){
             feature_data=Data.DEGS 
         }
         else if (option=='LGA'){
@@ -36,41 +36,101 @@ function BarChart(input) {
         else if (option=='Vehicle Brand'){
             feature_data=Data.vehicle_brand
         }
-        let feature_data_year_x = [];
-        let feature_data_year_y = [];
+        let feat = [];
+        let accident_count = [];
+        let accident_count_copy=[];
+        // Putting features and accident numbers into separate arrays
         for (const [key, value] of Object.entries(feature_data)){
             if (key.slice(-4)==year){
-                feature_data_year_x.push(key);
-                feature_data_year_y.push(value);
+                feat.push(key);
+                accident_count.push(value);
+                accident_count_copy.push(value);
             }
         }
-        for (let i=0;i<feature_data_year_x.length;i++){
-            feature_data_year_x[i]=feature_data_year_x[i].toLowerCase()
-            feature_data_year_x[i]=feature_data_year_x[i].substring(0, feature_data_year_x[i].length-5)
-            if (option=='DEGS'){
-                feature_data_year_x[i] = feature_data_year_x[i].replace("_", " ")
-                if (feature_data_year_x[i]=="large provincial_cities"){
-                    feature_data_year_x[i]="large provincial cities"
+        // cleaning features
+        for (let i=0;i<feat.length;i++){
+            feat[i]=feat[i].toLowerCase()
+            feat[i]=feat[i].substring(0, feat[i].length-5)
+            if (option=='Locality Type'){
+                feat[i]=`${feat[i]} `
+                feat[i]=feat[i][0].toUpperCase() + feat[i].slice(1)
+                feat[i] = feat[i].replace("_", " ")
+                if (feat[i]=="Large provincial_cities "){
+                    feat[i]="Large provincial cities "
                 }
             }
-        }
-        // if (option=='LGA'){
-        //     for (let i=0;i<feature_data_year_y;i++){
-        //         if (){
+            else if (option=='Vehicle Brand'){
+                feat[i]=`${feat[i]} `
+                feat[i]=feat[i][0].toUpperCase() + feat[i].slice(1)
+                if (feat[i] == '       '){
+                    accident_count[i]=0;
+                    }
+                else if (feat[i]=='Unkn  '){
+                    feat[i]='Unknown '
+                }
+            }
+            else if (option == 'Speed Zone'){
+                if (feat[i]=='999'){
+                    feat[i]='Unknown'
+                }
+                else if (feat[i]=='888'){
+                    feat[i]='Camping grounds, off road'
+                }
+                else if (feat[i]=='777'){
+                    feat[i]='Other'
+                }
+                else {
+                    feat[i]=`${feat[i]} km/hr `
+                }
 
-        //         }
-        //     }
-        // }
+            }
+            else if (option == 'Vehicle Type'){
+                feat[i]=`${feat[i]} `
+                feat[i]=feat[i][0].toUpperCase() + feat[i].slice(1)
+                if (feat[i]=='Prime mover (no of trailers unknown) '){
+                    feat[i]='Prime mover '
+                }
+                else if (feat[i]=='Heavy vehicle (rigid) > 4.5 tonnes '){
+                    feat[i]='Heavy vehicle '
+
+                }
+                else if (feat[i]=='Light commercial vehicle (rigid) <= 4.5 tonnes gvm '){
+                    feat[i]='Light commercial vehicle '
+
+                }
+            }
+            else if (option == 'Region' || option == 'Atmospheric Condition' || option=='Surface Condition' || option=='Light Condition' || option == 'LGA'){
+                feat[i]=`${feat[i]} `
+                feat[i]=feat[i][0].toUpperCase() + feat[i].slice(1)
+        }
+        }
+        // For certain options, only showing top 10
+        if (option=='LGA' || option=='Vehicle Type' || option=='Vehicle Brand' || option=='Atmospheric Condition'|| option=='Speed Zone'|| option=='Surface Condition'){
+            top_10_accident=accident_count_copy.sort(function(a, b){return b - a}).splice(0,10);
+            top_10_features=[];
+            let index = 0;
+            for (let i=0;i<10;i++){
+                index=accident_count.indexOf(top_10_accident[i]);
+                top_10_features.push(feat[index]);
+            }
+            accident_count=top_10_accident.reverse();
+            feat=top_10_features.reverse();
+        }
             let bar_data = [{
-                x: feature_data_year_y,
-                y: feature_data_year_x,
+                x: accident_count,
+                y: feat,
                 type: "bar",
                 orientation:'h'
             }];
             let layout = {
                 yaxis: {
-                    automargin: true
-                  }
+                    automargin: true,
+                  },
+                xaxis: {
+                    title: {
+                        text: "Number of Accidents",
+                      }
+                  },
               }
             Plotly.newPlot("bar", bar_data,layout);
         }
@@ -94,10 +154,10 @@ function optionChanged(){
 // This function plots default charts for when the page is vistited 
 function init(){
     // Plotting default charts 
-    BarChart(['2020','DEGS']);
+    BarChart(['2020','Locality Type']);
     // Put options in the dropdown menu 
     years = [2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020]
-    features=['DEGS','LGA','Region','Atmospheric Condition','Surface Condition','Light Condition','Speed Zone','Age Group','Vehicle Type','Vehicle Brand']
+    features=['Locality Type','LGA','Region','Atmospheric Condition','Surface Condition','Light Condition','Speed Zone','Age Group','Vehicle Type','Vehicle Brand']
     for (let i = 0;i<features.length;i++){
         dropdownMenuFeat.append("option").text(features[i]);
     }

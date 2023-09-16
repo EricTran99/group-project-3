@@ -10,12 +10,11 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(myMap);
 
-// var crashIcon = L.icon({
-//   iconUrl: 'leaf-green.png',
-//   iconSize:     [38, 95], // size of the icon
-//   iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
-//   popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
-// });
+var crashIcon = L.icon({
+  iconUrl: 'car-crash.png',
+  iconSize:     [40,40], // size of the icon
+  popupAnchor:  [3, -10] // point from which the popup should open relative to the iconAnchor
+});
 
 d3.json(url).then(function(data) {
   let markers = L.markerClusterGroup();
@@ -33,8 +32,7 @@ d3.json(url).then(function(data) {
       speed = 'Not known';
     }
    
-    markers.addLayer(L.marker([coordinates[0],coordinates[1]])
-        .bindPopup("<h3>Date: " + dict.date + "<h3><h3>Time: " + dict.time + "<h3><h3>Surface Condition: " + dict.surface_cond + 
+    markers.addLayer(L.marker([coordinates[0],coordinates[1]],{icon: crashIcon}).bindPopup("<h3>Date: " + dict.date + "<h3><h3>Time: " + dict.time + "<h3><h3>Surface Condition: " + dict.surface_cond + 
         "<h3><h3>Type: " + dict.accident_type + "<h3><h3>Fatalities: " + dict.no_persons_killed 
         + "<h3><h3>Light Condition: " + dict.light_cond + "<h3><h3>Atmospheric Condition: " + dict.atmosph_cond
         + "<h3><h3>Speed Zone: " + speed + "<h3></h3>"));
