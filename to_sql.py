@@ -4,16 +4,17 @@ from sqlalchemy import create_engine
 
 # Importing csv's
 
-accident_path = "Cleaned_datasets/master_accident_cleaned.csv"
+aggregated_person_path = "Cleaned_Aggregated_Datasets/aggregated_person.csv"
 
 # converting to pandas dataframes
 
-accident = pd.read_csv(accident_path,low_memory=False)
+aggregated_person = pd.read_csv(aggregated_person_path,low_memory=False)
 
-accident = accident[['ACCIDENT_NO',
-                    'ACCIDENTDATE',
-                    'NO_PERSONS',
-                    'NO_PERSONS_KILLED',
+aggregated_person = aggregated_person[[
+                    'Age_Group',
+                    'Fatal Accident',
+                    'Non Fatal Accident',
+                    'Total'
                     ]]
 
 # Create a postgres database and call it project_db
@@ -29,7 +30,7 @@ engine = create_engine(db_connection_string)
 
 
 # using ".to_sql(table_name, engine, if_exists='append', index=False)" we can append data to tables in sql db
-accident.to_sql("accident", engine, if_exists='replace', index=False)
+aggregated_person.to_sql("aggregated_person", engine, if_exists='replace', index=False)
 
 
 

@@ -1,4 +1,4 @@
-const url = 'http://127.0.0.1:5000/api/v1.0/accident'; // data URL
+const url = 'http://127.0.0.1:5000/api/v1.0/aggregated_person'; // data URL
 
 function LineChart() {
   // Fetch JSON data from the specified URL

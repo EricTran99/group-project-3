@@ -22,22 +22,22 @@ def homepage():
     #returning information about routes on homepage
     return (
         f"Available Routes:<br/>"
-        f"/api/v1.0/accident<br/>"
+        f"/api/v1.0/aggregated_person<br/>"
     )
 
-@app.route("/api/v1.0/accident")
-def accident():
-    query = engine.execute('Select * from "accident"')
-    accident_list=[]
+@app.route("/api/v1.0/aggregated_person")
+def aggregated_person():
+    query = engine.execute('Select * from "aggregated_person"')
+    aggregated_person_list=[]
     for row in query:
-        accident_dict={ 'ACCIDENT_NO':row[0],
-                        'ACCIDENTDATE':row[1],
-                        'NO_PERSONS':row[2],
-                        'NO_PERSONS_KILLED':row[3],
+        aggregated_person_dict={ 'Age_Group':row[0],
+                        'Fatal Accident':row[1],
+                        'Non Fatal Accident':row[2],
+                        'Total':row[3],
                         }
-        accident_list.append(accident_dict)
+        aggregated_person_list.append(aggregated_person_dict)
         
-    response = jsonify(accident_list)
+    response = jsonify(aggregated_person_list)
     response.headers.add('Access-Control-Allow-Origin','*')
     return response
 
