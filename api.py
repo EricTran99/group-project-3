@@ -23,6 +23,7 @@ def homepage():
     return (
         f"Available Routes:<br/>"
         f"/api/v1.0/aggregated_person<br/>"
+        f"/api/v1.0/aggregated_accident<br/>"
     )
 
 @app.route("/api/v1.0/aggregated_person")
@@ -36,8 +37,25 @@ def aggregated_person():
                         'Total':row[3],
                         }
         aggregated_person_list.append(aggregated_person_dict)
-        
     response = jsonify(aggregated_person_list)
+
+@app.route("/api/v1.0/aggregated_accident")
+def aggregated_accident():
+    query = engine.execute('Select * from "aggregated_accident"')
+    aggregated_accident_list=[]
+    for row in query:
+        aggregated_accident_dict={ 
+                        'DEG_URBAN_NAME':row[0],
+                        'Total_Accident':row[1],
+                        'Total_Person':row[2],
+                        'Fatal_Accident':row[3],
+                        'Non_Fatal_Accident':row[4],
+                        'Percentage_Fatal':row[5],
+                        'Percentage_Non_Fatal':row[6]
+                        }
+        aggregated_accident_list.append(aggregated_accident_dict)
+    response = jsonify(aggregated_accident_list)
+
     response.headers.add('Access-Control-Allow-Origin','*')
     return response
 
