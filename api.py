@@ -11,8 +11,12 @@ db_name = "project_db"
 
 # install psycopg2 with "pip install psycopg2" 
 
+# Making connection to postgres database
+
 db_connection_string = f"postgresql+psycopg2://{username}:{password}@localhost:{port}/{db_name}"
 engine = create_engine(db_connection_string)
+
+# Creating API
 
 app = Flask(__name__)
 
@@ -27,6 +31,8 @@ def homepage():
         f"/api/v1.0/vehicle<br/>"
         f"/api/v1.0/counts<br/>"
     )
+
+# This route simply contains data from accident table
 
 @app.route("/api/v1.0/accident")
 def accident():
@@ -53,6 +59,8 @@ def accident():
     response = jsonify(accident_list)
     response.headers.add('Access-Control-Allow-Origin','*')
     return response
+
+# This route contains data from person dataset
 
 @app.route("/api/v1.0/person")
 def person():
@@ -87,11 +95,14 @@ def vehicle():
     response.headers.add('Access-Control-Allow-Origin','*')
     return response
 
+# This route contains the number of accidents for each year by feature, e.i the number of accidents by age group in 2016
+
 @app.route("/api/v1.0/counts")
 def counts():
     counts_list=[]
     counts_dict={}
 
+    # Finding the counts for each year for each feature
     DEGS = engine.execute('SELECT "DEG_URBAN_NAME","year", COUNT(*) FROM ACCIDENT GROUP BY "DEG_URBAN_NAME","year" ')
     LGA = engine.execute('SELECT "LGA_NAME","year", COUNT(*) FROM ACCIDENT GROUP BY "LGA_NAME","year" ')
     region = engine.execute('SELECT "REGION_NAME","year", COUNT(*) FROM ACCIDENT GROUP BY "REGION_NAME","year"')
@@ -106,7 +117,7 @@ def counts():
     strings=['DEGS','LGA','region','atmos_cond','surface_cond','light_cond','speed_zone','age_group','vehicle_type','vehicle_brand']
     queries = [DEGS,LGA,region,atmos_cond,surface_cond,light_cond,speed_zone,age_group,vehicle_type,vehicle_brand]
     years = [2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020]
-
+    # Creating an array of dictionaries
     for i in range(len(strings)):
         counts_dict[strings[i]] = {}
         count_data = counts_dict[strings[i]]

@@ -1,11 +1,15 @@
+// Using data from /counts route of API
+
 const url2 = "http://127.0.0.1:5000/api/v1.0/counts"
 
+// This function plots a horizontal barchart for input = [year,feature] chosen 
 function BarChart(input) {
     d3.json(url2).then(function(data) {
         let year = input[0];
         let option = input[1];
         let Data = data[0]
         let feature_data=''
+        // selecting dataset that user has chosen 
         if (option=='Locality Type'){
             feature_data=Data.DEGS 
         }
@@ -49,10 +53,14 @@ function BarChart(input) {
         }
         // cleaning features
         for (let i=0;i<feat.length;i++){
+            // Converting strings to lower case and removing year from end of string
             feat[i]=feat[i].toLowerCase()
             feat[i]=feat[i].substring(0, feat[i].length-5)
+
             if (option=='Locality Type'){
+                // Adding space to end of string
                 feat[i]=`${feat[i]} `
+                // Making first letter uppercase
                 feat[i]=feat[i][0].toUpperCase() + feat[i].slice(1)
                 feat[i] = feat[i].replace("_", " ")
                 if (feat[i]=="Large provincial_cities "){
@@ -143,10 +151,10 @@ let dropdownMenuFeat = d3.select("#selDatasetFeat");
 let dropdownMenuYear = d3.select("#selDatasetYear");
 
 function optionChanged(){
-    // Finding option chosen
+    // Finding options chosen
     let feature = dropdownMenuFeat.property("value");
     let year = dropdownMenuYear.property("value");
-    // Calling functions for option 
+    // Calling function for options
     BarChart([year,feature]);
 }
 

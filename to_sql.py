@@ -14,16 +14,19 @@ accident = pd.read_csv(accident_path,low_memory=False)
 vehicle = pd.read_csv(vehicle_path,low_memory=False)
 person = pd.read_csv(person_path,low_memory=False)
 
+# Choosing columns required 
 accident = accident[['ACCIDENT_NO','ACCIDENTDATE','ACCIDENTTIME','Accident_Type_Desc'
                      ,'Day_Week_Description','Light Condition Desc','NO_PERSONS_KILLED'
                      ,'SPEED_ZONE','LGA_NAME','REGION_NAME','DEG_URBAN_NAME','Lat','Long','Atmosph_Cond_Desc',
                      'Surface_Cond_Desc']]
 
+# Creating year column
 year = pd.to_datetime(accident['ACCIDENTDATE'],dayfirst=True).dt.year
 accident['year']=year
 
 id_year = accident[['ACCIDENT_NO','year']]
-# Adding year column so the table can be groupedby year in the api.py file
+
+# Adding year column so the tables can be groupedby year in the api.py file
 
 vehicle = vehicle[['ACCIDENT_NO','VEHICLE_BODY_STYLE','VEHICLE_MAKE','VEHICLE_MODEL','Vehicle Type Desc']]
 

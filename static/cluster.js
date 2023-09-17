@@ -1,6 +1,8 @@
 
+// data from accident table is used
 const url = "http://127.0.0.1:5000/api/v1.0/accident"
 
+// map created
 let myMap = L.map("map", {
   center: [-37.8136, 144.9631],
   zoom: 7
@@ -10,12 +12,14 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(myMap);
 
+// Icon of car crash added to markers
 var crashIcon = L.icon({
   iconUrl: 'car-crash.png',
   iconSize:     [40,40], // size of the icon
   popupAnchor:  [3, -10] // point from which the popup should open relative to the iconAnchor
 });
 
+// getting dataset from API and graphing cluster map
 d3.json(url).then(function(data) {
   let markers = L.markerClusterGroup();
   for (let i = 0; i < data.length; i++) {
