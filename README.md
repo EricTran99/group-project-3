@@ -174,6 +174,11 @@ ADD STEPS HERE
  - pgAdmin: The pgAdmin tool functions as the window into the database. It's where queries are written, run and then the results of running them are reviewed. pgAdmin provides access to that data. Refer to "Installing" section below.
  - Chrome: to view APIs and final web application.
 
+**To get webpage running:**
+ - Open api.py in Visual Studio Code
+ - Navigate to folder location of api.py in terminal
+ - Type: python api.py
+ - Open index.html in Chrome to view website
 
 **To activate dev environment:**
 - Open Anaconda Prompt
@@ -201,5 +206,6 @@ ADD STEPS HERE
 
 ## Contributing
 
+- Plotly.js website: (https://plotly.com/javascript/)
 - Highcharts.js website: (https://api.highcharts.com/highcharts/)
-
+- Anychart.js website: (https://www.anychart.com/)
