@@ -67,6 +67,7 @@ In this scenario, our team has built an interactive web application, displaying 
 - [Getting Started](#getting-started)
 - [Installing](#installing)
 - [Contributing](#contributing)
+- [Sources](#sources)
 
 ## About
 ### Part 1: Clean Data and Perform Exploratory Analysis
