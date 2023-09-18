@@ -9,18 +9,22 @@ body {
 }
 
 header {
-  color: hsl(0, 0%, 100%);
+  color: #fff;
   padding: 15px;
   text-align: center;
   background-color: rgba(0, 0, 0, 0.5);
+  margin-bottom: 10px; /* Add margin to the bottom of the header */
 }
 
+/* Styling for purpose of the page*/
 p {
-  color: hsl(0, 0%, 100%);
+  color: #fff;
   padding: 15px;
   text-align: left;
+  margin-bottom: 10px; /* Add margin to the bottom of the paragraph */
 }
 
+/*Styling for url button at top of page*/
 .url-button {
   position: absolute;
   top: 20px;
@@ -30,36 +34,44 @@ p {
 
 #map {
   width: 100%;
-  height: 40vh;
+  height: 42vh;
   margin: 10px 0;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
 
-#map-title {
+/*Styling for all titles in webpage*/
+#map-title,
+#line-chart-title,
+#bar-chart-title,
+#age-group-chart-title {
   text-align: center;
-  margin-top: 10px;
   font-size: 24px;
+  margin-top: 10px;
   color: #fffdfd;
   background-color: rgba(0, 0, 0, 0.7);
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
+  margin-bottom: 10px; /* Add margin to the bottom of all titles */
 }
 
-#line-chart-title {
-  text-align: center;
-  font-size: 24px;
-  margin-top: 10px;
-  color: #fffdfd;
-  background-color: rgba(0, 0, 0, 0.7);
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
+/*Styling for all charts*/
+.chart {
+  background-color: rgba(255, 255, 255, 0.8);
+  width: 100%;
+  height: 35vh;
+  margin: 10px 0;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
 
-#bar-chart-title {
-  text-align: center;
-  font-size: 24px;
-  margin-top: 10px;
-  color: #fffdfd;
-  background-color: rgba(0, 0, 0, 0.7);
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
+.well {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 10px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  margin-bottom: 10px; /* Add margin to the bottom of the well */
+}
+
+.ageGroupBarChart{
+  background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
 
 /* Container for maps and charts */
@@ -69,34 +81,12 @@ p {
   justify-content: space-between;
 }
 
-/* Line Chart styling */
-.line-chart-container {
-  flex: 0 0 calc(50% - 10px); /* 50% width with margin in between */
-  margin: 0 5px;
+/* style the "well" div for filter barchart */
+.well-above-chart {
+  margin-bottom: 5px;
 }
 
-.chart {
-  background-color: rgba(255, 255, 255, 0.8);
-  width: 100%;
-  height: 35vh;
-  margin: 10px 0;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-}
-
-/* Bar Chart styling */
-.bar-chart-container {
-  flex: 0 0 calc(50% - 10px); /* 50% width with margin in between */
-  margin: 0 5px;
-}
-
-#bar {
-  height: 70vh;
-  margin-top: 10px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-  background-color: rgba(255, 255, 255, 0.8);
-}
-
-.well {
-  background-color: rgba(255, 255, 255, 0.8);
-  padding: 10px; 
+/* buffer div between filter barchart and heading */
+.buffer {
+  margin-bottom: 10px;
 }

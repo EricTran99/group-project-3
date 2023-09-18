@@ -14,7 +14,7 @@ function createLineChart(xData, yData, yDataNonFatal, yDataFatal) {
       title: {
         text: 'Year',
         style: {
-          fontSize: '12px'
+          fontSize: '14px'
         }
       },
       labels: {
@@ -27,12 +27,12 @@ function createLineChart(xData, yData, yDataNonFatal, yDataFatal) {
       title: {
         text: 'Number of Accidents',
         style: {
-          fontSize: '12px'
+          fontSize: '14px'
         }
       },
       labels: {
         style: {
-          fontSize: '12px'
+          fontSize: '14px'
         }
       },
       min: 0,  // Set the minimum value for the Y-axis
@@ -40,31 +40,36 @@ function createLineChart(xData, yData, yDataNonFatal, yDataFatal) {
     },
     legend: {
       itemStyle: {
-        fontSize: '12px'
-      }
+        fontSize: '14px'
+      },
+      align: 'center', // Align the legend to the center
+      verticalAlign: 'top', // Place the legend at the top
     },
     tooltip: {
       style: {
-        fontSize: '12px' // Adjust the font size as needed
+        fontSize: '14px' 
       }
     },
     series: [
       {
         name: 'All Accidents',
         data: yData,
-        color: 'orange'
+        color: 'coral'
       },
       {
         name: 'Non-Fatal Accidents',
         data: yDataNonFatal,
-        color:'green'
+        color:'steelblue'
       },
       {
         name: 'Fatal Accidents',
         data: yDataFatal,
-        color:'red'
+        color:'deepskyblue'
       }
-    ]
+    ],
+    accessibility: {
+      enabled: false, // Disable accessibility features
+    }
   });
 }
 function LineChart() {

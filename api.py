@@ -26,6 +26,8 @@ def homepage():
         f"/api/v1.0/person<br/>"
         f"/api/v1.0/vehicle<br/>"
         f"/api/v1.0/counts<br/>"
+        f"/api/v1.0/aggregated_person<br/>"
+        f"/api/v1.0/aggregated_accident<br/>"
     )
 
 @app.route("/api/v1.0/accident")
@@ -118,7 +120,41 @@ def counts():
     response.headers.add('Access-Control-Allow-Origin','*')
     return response
 
+@app.route("/api/v1.0/aggregated_person")
+def aggregated_person():
+    query = engine.execute('Select * from "aggregated_person"')
+    aggregated_person_list=[]
+    for row in query:
+        aggregated_person_dict={ 'Age_Group':row[0],
+                        'Fatal Accident':row[1],
+                        'Non Fatal Accident':row[2],
+                        'Total':row[3],
+                        }
+        aggregated_person_list.append(aggregated_person_dict)
+    response = jsonify(aggregated_person_list)
+    
+    response.headers.add('Access-Control-Allow-Origin','*')
+    return response
 
+@app.route("/api/v1.0/aggregated_accident")
+def aggregated_accident():
+    query = engine.execute('Select * from "aggregated_accident"')
+    aggregated_accident_list=[]
+    for row in query:
+        aggregated_accident_dict={ 
+                        'DEG_URBAN_NAME':row[0],
+                        'Total_Accident':row[1],
+                        'Total_Person':row[2],
+                        'Fatal_Accident':row[3],
+                        'Non_Fatal_Accident':row[4],
+                        'Percentage_Fatal':row[5],
+                        'Percentage_Non_Fatal':row[6]
+                        }
+        aggregated_accident_list.append(aggregated_accident_dict)
+    response = jsonify(aggregated_accident_list)
+
+    response.headers.add('Access-Control-Allow-Origin','*')
+    return response
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -7,12 +7,16 @@ from sqlalchemy import create_engine
 accident_path = "Cleaned_Datasets/master_accident_cleaned.csv"
 vehicle_path = "Cleaned_Datasets/vehicle_cleaned.csv"
 person_path = "Cleaned_Datasets/person_cleaned.csv"
+aggregated_person_path = "Cleaned_Aggregated_Datasets/aggregated_person.csv"
+aggregated_accident_path = "Cleaned_Aggregated_Datasets/aggregated_accident.csv"
 
 # converting to pandas dataframes
 
 accident = pd.read_csv(accident_path,low_memory=False)
 vehicle = pd.read_csv(vehicle_path,low_memory=False)
 person = pd.read_csv(person_path,low_memory=False)
+aggregated_person = pd.read_csv(aggregated_person_path,low_memory=False)
+aggregated_accident = pd.read_csv(aggregated_accident_path,low_memory=False)
 
 accident = accident[['ACCIDENT_NO','ACCIDENTDATE','ACCIDENTTIME','Accident_Type_Desc'
                      ,'Day_Week_Description','Light Condition Desc','NO_PERSONS_KILLED'
@@ -33,6 +37,23 @@ person = person[['ACCIDENT_NO','SEX','Age_Group','Road_User_Type_Desc']]
 
 person = person.merge(id_year,on='ACCIDENT_NO')
 
+aggregated_person = aggregated_person[[
+                    'Age_Group',
+                    'Fatal Accident',
+                    'Non Fatal Accident',
+                    'Total'
+                    ]]
+
+aggregated_accident = aggregated_accident[[
+                    'DEG_URBAN_NAME',
+                    'Total_Accident',
+                    'Total_Person',
+                    'Fatal_Accident',
+                    'Non_Fatal_Accident',
+                    'Percentage_Fatal',
+                    'Percentage_Non_Fatal',
+                    ]]
+
 # Create a postgres database and call it project_db
 # Making connection to postgresql db
 
@@ -49,7 +70,8 @@ engine = create_engine(db_connection_string)
 accident.to_sql("accident", engine, if_exists='replace', index=False)
 vehicle.to_sql("vehicle", engine, if_exists='replace', index=False)
 person.to_sql("person", engine, if_exists='replace', index=False)
-
+aggregated_person.to_sql("aggregated_person", engine, if_exists='replace', index=False)
+aggregated_accident.to_sql("aggregated_accident", engine, if_exists='replace', index=False)
 
 
 

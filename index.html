@@ -31,7 +31,11 @@
     
     <!-- highcharts.js library for line chart-->
     <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script> <!--to disable accessibility warning in js code-->
     
+    <!-- anychart.js library for line chart-->
+    <script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-base.min.js"></script>
+
     <!-- Marker cluster CSS -->
     <link rel="stylesheet" type="text/css"
         href="https://unpkg.com/leaflet.markercluster@1.0.3/dist/MarkerCluster.css">
@@ -74,47 +78,53 @@
         </div>
     </div>
 
-<!-- Maps and Charts container -->
-<div class="container-fluid">
-  <div class="row">
-      <!-- Map and Line Chart Container -->
-      <div class="col-md-6">
-          <!-- Map Container -->
-          <div class="row">
-              <div class="col-md-12">
-                  <div id="map-title">Road Accidents By Location</div>
-                  <div id="map"></div>
-              </div>
-          </div>
-          
-          <!-- Line Chart Container -->
-          <div class="row">
-              <div class="col-md-12">
-                  <div id="line-chart-title">Road Accidents Over Time</div>
-                  <div class="chart" id="LineChart"></div>
-              </div>
-          </div>
-      </div>
-      
-      <!-- Bar Chart Container -->
-
-      <div class="col-md-6">
-          <div id="bar-chart-title">Road Accidents By Category</div>
-          <div class="chart" id="bar"></div>
-              <div class="col-md-10">
-                <div class="well">
-                  <h5>Choose which <b><u>measure</u></b> and <b><u>year</u></b> you would like to view:</h5>
-                  <select id="selDatasetFeat" onchange="optionChanged(this.value)"></select>
-                  <select id="selDatasetYear" onchange="optionChanged(this.value)"></select>
+    <!-- Maps and Charts container -->
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Map and Line Chart Container -->
+            <div class="col-md-6">
+                <!-- Map Container -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <div id="map-title">Road Accidents By Location</div>
+                        <div id="map"></div>
+                    </div>
                 </div>
-              </div>
-          </div>
-          </div>
-      </div>
+                
+                <!-- Line Chart Container -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <div id="line-chart-title">Road Accidents Over Time</div>
+                        <div class="chart" id="LineChart"></div>
+                    </div>
+                </div>
+            </div>
 
-  <!-- Our JavaScript -->
-  <script type="text/javascript" src="static/cluster.js"></script>
-  <script type="text/javascript" src="static/linecharts.js"></script>
-  <script src="./static/charts.js"></script>
+            <!-- Bar Chart and Age Group Bar Chart Container -->
+            <div class="col-md-6">
+                <!-- Bar with Filter Container -->
+                <div class="row"></div>
+                    <div class="col-md-12"></div>
+                        <div id="bar-chart-title">Road Accidents By Category</div>
+                        <div class="well">
+                            <h5>Choose which <b><u>measure</u></b> and <b><u>year</u></b> you would like to view:</h5>
+                            <select id="selDatasetFeat" onchange="optionChanged(this.value)"></select>
+                            <select id="selDatasetYear" onchange="optionChanged(this.value)"></select>
+                        </div>
+                    <div class="col-md-12"></div>
+                        <div class="chart" id="bar"></div>
+                <div class="row"></div>
+                    <div class="col-md-12"></div>        
+                        <div id="age-group-chart-title">Fatal & Non Fatal Accidents By Age Group</div>
+                        <div class="chart" id="ageGroupBarChart"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Our JavaScript -->
+    <script type="text/javascript" src="static/cluster.js"></script>
+    <script type="text/javascript" src="static/linecharts.js"></script>
+    <script src="./static/chartsfilter.js"></script>
+    <script src="./static/barcharts.js"></script>
 </body>
 </html>
