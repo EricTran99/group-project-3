@@ -65,26 +65,12 @@ In this scenario, our team has built an interactive web application, displaying 
 ## Table of Contents
 
 - [About](#about)
-  - [Part 1: Clean Data and Perform Exploratory Analysis](#Part-1:-Clean-Data-and-Perform-Exploratory-Analysis)
+  - [Part 1: Clean Data and Perform Exploratory Analysis](#part-1-clean-data-and-perform-exploratory-analysis)
 - [Getting Started](#getting-started)
 - [Installing](#installing)
 - [Contributing](#contributing)
 - [Sources](#sources)
 
-1. [Example](#example)
-2. [Example2](#example2)
-3. [Third Example](#third-example)
-
-## Example [](#){name=example}
-
-## [Third Example](#){name=third-example}
-
-a
-sdfasdfasd
-asdfa
-sdfasdfasdf
-
-## Example2 [](#){name=example2}
 
 ## About
 ### Part 1: Clean Data and Perform Exploratory Analysis
