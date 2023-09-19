@@ -65,7 +65,9 @@ In this scenario, our team has built an interactive web application, displaying 
 ## Table of Contents
 
 - [About](#about)
-  - [Part 1: Clean Data and Perform Exploratory Analysis](#part-1-clean-data-and-perform-exploratory-analysis)
+    - [Part 1: Clean Data and Perform Exploratory Analysis](#part-1-clean-data-and-perform-exploratory-analysis)
+    - [Part 2: Create the Project Database and Import Data](#part-2-create-the-project-database-and-import-data)
+    - [Part 3: Create the Web Application](#part-3-create-the-web-application)
 - [Getting Started](#getting-started)
 - [Installing](#installing)
 - [Contributing](#contributing)
