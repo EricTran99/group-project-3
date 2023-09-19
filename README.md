@@ -67,6 +67,7 @@ In this scenario, our team has built an interactive web application, displaying 
 - [Getting Started](#getting-started)
 - [Installing](#installing)
 - [Contributing](#contributing)
+- [Sources](#sources)
 
 ## About
 ### Part 1: Clean Data and Perform Exploratory Analysis
@@ -153,16 +154,15 @@ In this section, using QuickDBD, we sketched an ERD to form a table schema of th
    - sqlalchemy library: provides the SQL toolkit and Object-Relational Mapper (ORM) functionality. The create_engine function is to create a database engine to connect with the database in order to interact with the database, and perform operations such as SQL queries
 
 ### Part 3: Create the Flask Powered APIs
-We then created three APIs using python code (api.py) sourcing the data in project_db. In order for the APIs to run, the version of SQLalchemy had to be 1.4.39.
+We then created an API with 2 routes http://127.0.0.1:5000/api/v1.0/accident and http://127.0.0.1:5000/api/v1.0/counts using flask in python (api.py) that uses the data in the database project_db. In order for the APIs to run, the version of SQLalchemy had to be 1.4.39.
 
 **Tools/Libraries We Imported:**
    - pandas library: for data manipulation and analysis
    - sqlalchemy library: provides the SQL toolkit and Object-Relational Mapper (ORM) functionality. The create_engine function is to create a database engine to connect with the database in order to interact with the database, and perform operations such as SQL queries
    - flask library: to create API and convert the data in SQL database to json format
-   - numpy library: used for numeric computation
 
 ### Part 4: Create the Web Application
-ADD STEPS HERE
+NEED TO ADD HERE
 
 ## Getting Started
 
@@ -209,3 +209,7 @@ ADD STEPS HERE
 - Plotly.js website: (https://plotly.com/javascript/)
 - Highcharts.js website: (https://api.highcharts.com/highcharts/)
 - Anychart.js website: (https://www.anychart.com/)
+
+## Sources
+
+Icon used in cluster chart taken from https://www.flaticon.com/free-icon/car-crash_3664541
