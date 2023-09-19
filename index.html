@@ -32,9 +32,6 @@
     <!-- highcharts.js library for line chart-->
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="https://code.highcharts.com/modules/accessibility.js"></script> <!--to disable accessibility warning in js code-->
-    
-    <!-- anychart.js library for line chart-->
-    <script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-base.min.js"></script>
 
     <!-- Marker cluster CSS -->
     <link rel="stylesheet" type="text/css"
@@ -91,16 +88,16 @@
                     </div>
                 </div>
                 
-                <!-- Line Chart Container -->
+                <!-- Map2 Chart Container -->
                 <div class="row">
                     <div class="col-md-12">
-                        <div id="line-chart-title">Road Accidents Over Time</div>
-                        <div class="chart" id="LineChart"></div>
+                        <div id="map2-title">Road Accidents By Locality Type</div>
+                        <div class="chart" id="map2"></div>
                     </div>
                 </div>
             </div>
 
-            <!-- Bar Chart and Age Group Bar Chart Container -->
+            <!-- Bar Chart and Line Bar Chart Container -->
             <div class="col-md-6">
                 <!-- Bar with Filter Container -->
                 <div class="row"></div>
@@ -115,16 +112,17 @@
                         <div class="chart" id="bar"></div>
                 <div class="row"></div>
                     <div class="col-md-12"></div>        
-                        <div id="age-group-chart-title">Fatal & Non Fatal Accidents By Age Group</div>
-                        <div class="chart" id="ageGroupBarChart"></div>
+                    <div id="line-chart-title">Road Accidents Over Time</div>
+                    <div class="chart" id="LineChart"></div>
             </div>
         </div>
     </div>
+  
 
     <!-- Our JavaScript -->
     <script type="text/javascript" src="static/cluster.js"></script>
     <script type="text/javascript" src="static/linecharts.js"></script>
     <script src="./static/chartsfilter.js"></script>
-    <script src="./static/barcharts.js"></script>
+    <script src="./static/mapcircles.js"></script>
 </body>
 </html>
