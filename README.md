@@ -74,7 +74,7 @@ In this scenario, our team has built an interactive web application, displaying 
 - [About](#about)
     - [Part 1: Clean Data and Perform Exploratory Analysis](#part-1-clean-data-and-perform-exploratory-analysis)
     - [Part 2: Create the Project Database and Import Data](#part-2-create-the-project-database-and-import-data)
-    - [Part 3: Create the Flask Powered APIs](#part-3-create-the-flask-powered-apis)
+    - [Part 3: Create the Flask Powered API](#part-3-create-the-flask-powered-api)
     - [Part 4: Create the Web Application](#part-4-create-the-web-application)
 - [Getting Started](#getting-started)
 - [Installing](#installing)
@@ -175,7 +175,7 @@ In this section, using QuickDBD, we sketched an ERD to form a table schema of th
    - pandas library: for data manipulation and analysis
    - sqlalchemy library: provides the SQL toolkit and Object-Relational Mapper (ORM) functionality. The create_engine function is to create a database engine to connect with the database in order to interact with the database, and perform operations such as SQL queries
 
-### Part 3: Create the Flask Powered APIs
+### Part 3: Create the Flask Powered API
 We then created an API with 2 routes http://127.0.0.1:5000/api/v1.0/accident and http://127.0.0.1:5000/api/v1.0/counts using flask in python that uses the data in the database project_db. In order for the API to run, the version of SQLalchemy had to be 1.4.39.
 
 **Our Python Script:**
@@ -187,6 +187,25 @@ We then created an API with 2 routes http://127.0.0.1:5000/api/v1.0/accident and
    - flask library: to create API and convert the data in SQL database to json format
 
 ### Part 4: Create the Web Application
+Utilising javascript, html and css coding, we created the web application. A separate javascript file was created for each of the four visualisations ie. cluster map, map by locality type, bar chart and line chart. Each of the javascript call on a route from the API created in Part 3 to source the json formatted road accident data. Functions were created to then manipulate the data in order to create the different visualisations. The html file called on modules and libraries in order to create the visualisations, set the main layout of the webpage and links to the javascript files and the style.css file. The style.css file contained styling for different elements of the webpage eg. borders, shading, font size, height and width etc.
+
+**Our Javascript Files:**
+  - Horizontal Barchart with filters by measure and year: chartsfilter.js
+    - library used: Plotly.js
+  - Cluster Map of road accidents by location: cluster.js
+    - library used: Leaflet.js
+  - Linechart of road accidents by year split to fatal and nonfatal accidents: linecharts.js
+    - library used: Highcharts.js
+  - Map of location of road accidents, colour coded by locality type: mapcircles.js
+    - library used: Leaflet.js
+
+**Our Style Script:**
+  - style.css
+
+**Our HTML Script:**
+  - index.html
+
+### Part 5: Deploy Website To Github Pages
 NEED TO ADD HERE
 
 ## Getting Started
@@ -233,7 +252,6 @@ NEED TO ADD HERE
 
 - Plotly.js website: (https://plotly.com/javascript/)
 - Highcharts.js website: (https://api.highcharts.com/highcharts/)
-- Anychart.js website: (https://www.anychart.com/)
 
 ## Sources
 
