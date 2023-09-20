@@ -176,7 +176,10 @@ In this section, using QuickDBD, we sketched an ERD to form a table schema of th
    - sqlalchemy library: provides the SQL toolkit and Object-Relational Mapper (ORM) functionality. The create_engine function is to create a database engine to connect with the database in order to interact with the database, and perform operations such as SQL queries
 
 ### Part 3: Create the Flask Powered APIs
-We then created an API with 2 routes http://127.0.0.1:5000/api/v1.0/accident and http://127.0.0.1:5000/api/v1.0/counts using flask in python (api.py) that uses the data in the database project_db. In order for the APIs to run, the version of SQLalchemy had to be 1.4.39.
+We then created an API with 2 routes http://127.0.0.1:5000/api/v1.0/accident and http://127.0.0.1:5000/api/v1.0/counts using flask in python that uses the data in the database project_db. In order for the API to run, the version of SQLalchemy had to be 1.4.39.
+
+**Our Python Script:**
+  - To create API: api.py
 
 **Tools/Libraries We Imported:**
    - pandas library: for data manipulation and analysis
