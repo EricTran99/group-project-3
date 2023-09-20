@@ -53,9 +53,16 @@ In this scenario, our team has built an interactive web application, displaying 
   - Map_Road_Fatalities.ipynb
 - Other:
   - crashstats_user_guide_and_appendices.pdf
+- Presentation:
+  -  Victoria Car Accident - Group 9 Project 3 Presentation.pptx
 - static:
-  - charts.js
+  - images:
+    - car-crash.png
+    - Drive-road-in-Victoria.jpeg
+  - chartsfilter.js
   - cluster.js
+  - linecharts.js
+  - mapcircles.js
   - style.css
 - api.py
 - index.html
