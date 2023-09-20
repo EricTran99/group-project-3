@@ -152,7 +152,7 @@ At the beginning, we used Jupyter Notebook to import six CSV files, that were cl
 
 ### Part 2: Create the Project Database and Import Data
 
-In this section, using QuickDBD, we sketched an ERD to form a table schema of the three CSV files we created in Part 1 above. We identified the dependencies between each table (primary and foreign keys), their relationships (one-one/one-many, many-one) and the relevant datatypes for each column. We created a SQL database (project_db) in Postgres through pgAdmin. CSV files generated in Part 1 were imported into relevant tables using python code (to_sql.py) using python SQLAlchemy in Visual Studio Code. In order to create the connection between python and postgres, we installed psycopg2 (PostgreSQL adapter).
+In this section, using QuickDBD, we sketched an ERD to form a table schema of the three CSV files we created in Part 1 above. We identified the dependencies between each table (primary and foreign keys), their relationships (one-one/one-many, many-one) and the relevant datatypes for each column. We created a SQL database (project_db) in Postgres through pgAdmin. CSV files generated in Part 1 were imported into relevant tables using using python SQLAlchemy in Visual Studio Code (to_sql.py). In order to create the connection between python and postgres, we installed psycopg2 (PostgreSQL adapter).
 
 **ERD Diagram:**
  - ERD Diagram: QuickDBD-VIC ROAD ACCIDENTS DATA 1_1_2006 to 1_11_2020.png
@@ -168,7 +168,8 @@ In this section, using QuickDBD, we sketched an ERD to form a table schema of th
 
 **Tables loaded into project_db:**
 
-![Project_db screenshot](https://github.com/Nisloen/group-project-3/assets/132874272/677cc1da-07d3-4a3f-843a-3b232b0d806d)
+![image](https://github.com/Nisloen/group-project-3/assets/132874272/31351c90-83e8-4d41-865e-1d6c0c2aa638)
+
 
 **Tools/Libraries We Imported:**
    - pandas library: for data manipulation and analysis
