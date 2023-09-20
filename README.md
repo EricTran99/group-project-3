@@ -207,7 +207,7 @@ Utilising javascript, html and css coding, we created the road accident web appl
   - index.html
 
 ### Part 5: Deploy Website To Github Pages
-Lastly, to deploy our website application containing the interactive dashboard, we following the steps outlined in the following link: https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site
+Lastly, to deploy our website application containing the interactive dashboard, we followed the steps outlined in the following link: https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site
 
 Our website: 
 
