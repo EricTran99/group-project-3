@@ -86,13 +86,18 @@ In this scenario, our team has built an interactive web application, displaying 
 ### Part 1: Clean Data and Perform Exploratory Analysis
 
 At the beginning, we used Jupyter Notebook to import six CSV files, that were cleaned, manipulated and merged to create three dataframes. The dataframes were then exported into csv files. Exploratory Analysis was performed to gain an understanding of the data and possible charts and maps to display on the final web application. The key insights we discovered were:
-1. With the exception of 2020, the number of road accidents has not changed since 2006, indicating that more needs to be done to improve this.
-2. Most fatal road accidents occur in rural victoria, whilst the majority of non fatal road accidents occur in urban settings.
-3. Age bracket 30-39 persons are most likely to be in fatal and non fatal accidents
-4. Fatal accidents are most likely to occur on a Saturday or Sunday depending on the year, whereas non fatal accidents are more likely to be on a weekday.
-5. March is the worst month generally for road accidents, fatal and non fatal.
-6. Most fatal accidents occur in 100 speed zone, which coincides with the the majority of fatal accidents occuring in rural victoria where the majority of roads have a 100+ speed zone.
-7. Most non fatal accidents occur in 60 speed zone, which coincides with the majority of non fatal accidents occuring in urban settings where the majority of roads have a 60 speed zone.
+1. With the exception of 2020, the number of road accidents per year has remained fairly constant since 2006, indicating that more needs to be done to improve road safety.
+2. March is the worst month generally for road accidents, fatal and non fatal.
+3. The majority of fatal road accidents occur in:
+    - rural victoria: 2,144 or 53.15%,
+    - 100+ speed zone, 
+    - 30-39 yr olds: 592,
+    - Saturday or Sunday (depending on the year).
+4. The majority of non-fatal road accidents occur in:
+    - urban settings: 326,757 or 67.31%
+    - 60 speed zone, 
+    - 30-39 yr olds: 84,047
+    - on a weekday.
 
 **Resource Files We Used:**
   - ACCIDENT.csv
@@ -139,7 +144,10 @@ At the beginning, we used Jupyter Notebook to import six CSV files, that were cl
 
 **Tools/Libraries We Imported:**
    - pandas library: for data manipulation and analysis
-NEED TO ADD HERE
+   - pathlib library: to create and manipulate file and directory paths easily
+   - matplotlib library: to create plots including line and bar charts
+   - geopandas library: to create maps and visualise geopspatial data
+   - shapely.geometry library: to represent specific locations on the Earth's surface (using longitude and latitude in this case)
 
 
 ### Part 2: Create the Project Database and Import Data
