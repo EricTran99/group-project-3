@@ -58,7 +58,7 @@ In this scenario, our team has built an interactive web application, displaying 
 - static:
   - images:
     - car-crash.png
-    - Drive-road-in-Victoria.jpeg
+    - Driving-road-in-Victoria.jpeg
   - chartsfilter.js
   - cluster.js
   - linecharts.js
