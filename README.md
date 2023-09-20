@@ -76,6 +76,7 @@ In this scenario, our team has built an interactive web application, displaying 
     - [Part 2: Create the Project Database and Import Data](#part-2-create-the-project-database-and-import-data)
     - [Part 3: Create the Flask Powered API](#part-3-create-the-flask-powered-api)
     - [Part 4: Create the Web Application](#part-4-create-the-web-application)
+    - [Part 5: Deploy Website To Github Pages](#part-5-deploy-website-to-github-pages)
 - [Getting Started](#getting-started)
 - [Installing](#installing)
 - [Contributing](#contributing)
