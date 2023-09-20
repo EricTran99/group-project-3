@@ -206,7 +206,9 @@ Utilising javascript, html and css coding, we created the web application. A sep
   - index.html
 
 ### Part 5: Deploy Website To Github Pages
-NEED TO ADD HERE
+Lastly, to deploy our website application containing the interactive dashboard, we following the steps outlined in the following link: https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site
+
+Our website: 
 
 ## Getting Started
 
