@@ -187,17 +187,17 @@ We then created an API with 2 routes http://127.0.0.1:5000/api/v1.0/accident and
    - flask library: to create API and convert the data in SQL database to json format
 
 ### Part 4: Create the Web Application
-Utilising javascript, html and css coding, we created the web application. A separate javascript file was created for each of the four visualisations ie. cluster map, map by locality type, bar chart and line chart. Each of the javascript call on a route from the API created in Part 3 to source the json formatted road accident data. Functions were created to then manipulate the data in order to create the different visualisations. The html file called on modules and libraries in order to create the visualisations, set the main layout of the webpage and links to the javascript files and the style.css file. The style.css file contained styling for different elements of the webpage eg. borders, shading, font size, height and width etc.
+Utilising javascript, html and css coding, we created the road accident web application. A separate javascript file was created for each of the four visualisations ie. cluster map, map by locality type, bar chart and line chart. Each of the javascript files call on a route from the API created in Part 3 to source the json formatted road accident data. Functions were created to then manipulate the data in order to create the different visualisations. The html file called on modules and libraries in order to create the visualisations, set the main layout of the webpage and links to the javascript files and the style.css file. The style.css file contained styling for different elements of the webpage eg. borders, shading, font size, height and width etc.
 
 **Our Javascript Files:**
   - Horizontal Barchart with filters by measure and year: chartsfilter.js
-    - library used: Plotly.js
+    - javascript libraries used: Plotly.js, D3.js
   - Cluster Map of road accidents by location: cluster.js
-    - library used: Leaflet.js
+    - javascript libraries used: Leaflet.js, D3.js
   - Linechart of road accidents by year split to fatal and nonfatal accidents: linecharts.js
     - library used: Highcharts.js
   - Map of location of road accidents, colour coded by locality type: mapcircles.js
-    - library used: Leaflet.js
+    - javascript libraries used: Leaflet.js, D3.js
 
 **Our Style Script:**
   - style.css
