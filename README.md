@@ -195,10 +195,12 @@ Utilising javascript, html and css coding, we created the road accident web appl
     - javascript libraries used: Plotly.js, D3.js
   - Cluster Map of road accidents by location: cluster.js
     - javascript libraries used: Leaflet.js, D3.js
+    - OpenStreetMap used for map layer
   - Linechart of road accidents by year split to fatal and nonfatal accidents: linecharts.js
     - library used: Highcharts.js
   - Map of location of road accidents, colour coded by locality type: mapcircles.js
     - javascript libraries used: Leaflet.js, D3.js
+    - OpenStreetMap used for map layer
 
 **Our Style Script:**
   - style.css
