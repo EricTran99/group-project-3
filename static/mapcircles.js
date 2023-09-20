@@ -1,5 +1,3 @@
-let link = "https://data.gov.au/geoserver/vic-local-government-areas-psma-administrative-boundaries/wfs?request=GetFeature&typeName=ckan_bdf92691_c6fe_42b9_a0e2_a4cd716fa811&outputFormat=json"
-
 let accident_data_api = "http://127.0.0.1:5000/api/v1.0/accident"
 
 let layered_circle = [];
@@ -51,7 +49,6 @@ d3.json(accident_data_api).then(function(data) {
         }).addTo(myMap2);
 
 });
-console.log(layered_circle)
 
 let myMap2 = L.map("map2", {
     center: [-36.5870, 145.0100],
@@ -64,9 +61,6 @@ let mapStyle = {
     fillOpacity: 0.1,
     weight: 1
 };
-d3.json(link).then(function(data) {
-    L.geoJson(data, {style: mapStyle}).addTo(myMap2);
-});
 
 // Create an HTML element for the legend
 var legend = L.control({ position: 'topright' });

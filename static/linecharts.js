@@ -4,7 +4,7 @@ function createLineChart(xData, yData, yDataNonFatal, yDataFatal) {
   Highcharts.chart('LineChart', {
     chart: {
       type: 'line',
-      backgroundColor: 'rgba(240, 240, 240, 0.6)' // Background color with transparency
+      backgroundColor: 'rgba(240, 240, 240, 0.6)'
     },
     title: {
       text: ''
@@ -35,15 +35,15 @@ function createLineChart(xData, yData, yDataNonFatal, yDataFatal) {
           fontSize: '14px'
         }
       },
-      min: 0,  // Set the minimum value for the Y-axis
+      min: 0, 
       max: 16000
     },
     legend: {
       itemStyle: {
         fontSize: '14px'
       },
-      align: 'center', // Align the legend to the center
-      verticalAlign: 'top', // Place the legend at the top
+      align: 'center', 
+      verticalAlign: 'top',
     },
     tooltip: {
       style: {
@@ -68,7 +68,7 @@ function createLineChart(xData, yData, yDataNonFatal, yDataFatal) {
       }
     ],
     accessibility: {
-      enabled: false, // Disable accessibility features
+      enabled: false, // Disable accessibility features to remove warning message
     }
   });
 }
@@ -124,9 +124,8 @@ function LineChart() {
     });
 }
 
-// This function plots default charts for when the page is visited
+// Plots default chart for when the page is visited
 function init() {
-  // Plotting default charts
   LineChart(); // Call the LineChart function
 }
 

@@ -1,7 +1,6 @@
 from sqlalchemy import create_engine
 from flask import Flask, jsonify
 import pandas as pd
-import numpy as np
 
 
 port = 5432
@@ -23,11 +22,7 @@ def homepage():
     return (
         f"Available Routes:<br/>"
         f"/api/v1.0/accident<br/>"
-        f"/api/v1.0/person<br/>"
-        f"/api/v1.0/vehicle<br/>"
         f"/api/v1.0/counts<br/>"
-        f"/api/v1.0/aggregated_person<br/>"
-        f"/api/v1.0/aggregated_accident<br/>"
     )
 
 @app.route("/api/v1.0/accident")
@@ -53,39 +48,6 @@ def accident():
         accident_list.append(accident_dict)
         
     response = jsonify(accident_list)
-    response.headers.add('Access-Control-Allow-Origin','*')
-    return response
-
-@app.route("/api/v1.0/person")
-def person():
-    query = engine.execute('Select * from "person"')
-    person_list=[]
-    for row in query:
-        person_dict={'accident_vehicle_id':row[0],
-                     'sex':row[1],
-                     'age_group':row[2],
-                     'road_user_type':row[3]
-                    }
-        person_list.append(person_dict)
-        
-    response = jsonify(person_list)
-    response.headers.add('Access-Control-Allow-Origin','*')
-    return response
-
-@app.route("/api/v1.0/vehicle")
-def vehicle():
-    query = engine.execute('Select * from "vehicle"')
-    vehicle_list=[]
-    for row in query:
-        vehicle_dict={'accident_vehicle_id':row[0],
-                      'vehicle_body_style':row[1],
-                      'vehicle_make':row[2],
-                      'vehicle_model':row[3],
-                      'vehicle_type_desc':row[4]
-                      }
-        vehicle_list.append(vehicle_dict)
-        
-    response = jsonify(vehicle_list)
     response.headers.add('Access-Control-Allow-Origin','*')
     return response
 
@@ -120,41 +82,6 @@ def counts():
     response.headers.add('Access-Control-Allow-Origin','*')
     return response
 
-@app.route("/api/v1.0/aggregated_person")
-def aggregated_person():
-    query = engine.execute('Select * from "aggregated_person"')
-    aggregated_person_list=[]
-    for row in query:
-        aggregated_person_dict={ 'Age_Group':row[0],
-                        'Fatal Accident':row[1],
-                        'Non Fatal Accident':row[2],
-                        'Total':row[3],
-                        }
-        aggregated_person_list.append(aggregated_person_dict)
-    response = jsonify(aggregated_person_list)
-    
-    response.headers.add('Access-Control-Allow-Origin','*')
-    return response
-
-@app.route("/api/v1.0/aggregated_accident")
-def aggregated_accident():
-    query = engine.execute('Select * from "aggregated_accident"')
-    aggregated_accident_list=[]
-    for row in query:
-        aggregated_accident_dict={ 
-                        'DEG_URBAN_NAME':row[0],
-                        'Total_Accident':row[1],
-                        'Total_Person':row[2],
-                        'Fatal_Accident':row[3],
-                        'Non_Fatal_Accident':row[4],
-                        'Percentage_Fatal':row[5],
-                        'Percentage_Non_Fatal':row[6]
-                        }
-        aggregated_accident_list.append(aggregated_accident_dict)
-    response = jsonify(aggregated_accident_list)
-
-    response.headers.add('Access-Control-Allow-Origin','*')
-    return response
 
 if __name__ == '__main__':
     app.run(debug=True)
