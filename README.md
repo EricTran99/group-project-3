@@ -5,7 +5,8 @@
 In this scenario, our team has built an interactive web application, displaying various maps and charts representing Victorian road accidents from 2006 to 2020. This involved the creation of an ETL (Extract, Transform, Load) Pipeline. Crash Data was sourced from the DataVIC website (https://discover.data.vic.gov.au/dataset/crash-stats-data-extract) in the form of CSV files. The CSV files were cleaned and exploratory analysis was performed in Jupyter Notebook. An Entity Relationship Diagram (ERD) was created, along with a table schema, before uploading the data into a Postgres database. Python Flash-powered APIs were created. Finally, the web application was built using HTML, CSS and Javascript coding.
 
 
-![image](https://github.com/Nisloen/group-project-3/assets/132874272/d32ca34a-573e-4e96-825b-1f3371bf05b0)
+![image](https://github.com/Nisloen/group-project-3/assets/132874272/d54fce98-c748-449d-b8ba-8685e8452649)
+
 
 
 **Repository Folders and Contents:**
@@ -64,10 +65,15 @@ In this scenario, our team has built an interactive web application, displaying 
 ## Table of Contents
 
 - [About](#about)
+    - [Part 1: Clean Data and Perform Exploratory Analysis](#part-1-clean-data-and-perform-exploratory-analysis)
+    - [Part 2: Create the Project Database and Import Data](#part-2-create-the-project-database-and-import-data)
+    - [Part 3: Create the Flask Powered APIs](#part-3-create-the-flask-powered-apis)
+    - [Part 4: Create the Web Application](#part-4-create-the-web-application)
 - [Getting Started](#getting-started)
 - [Installing](#installing)
 - [Contributing](#contributing)
 - [Sources](#sources)
+
 
 ## About
 ### Part 1: Clean Data and Perform Exploratory Analysis
@@ -212,4 +218,5 @@ NEED TO ADD HERE
 
 ## Sources
 
-Icon used in cluster chart taken from https://www.flaticon.com/free-icon/car-crash_3664541
+- Icon used in cluster chart taken from: https://www.flaticon.com/free-icon/car-crash_3664541
+- Background image for website taken from: https://www.whichcar.com.au/car-advice/the-best-driving-roads-in-victoria
