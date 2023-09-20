@@ -53,9 +53,16 @@ In this scenario, our team has built an interactive web application, displaying 
   - Map_Road_Fatalities.ipynb
 - Other:
   - crashstats_user_guide_and_appendices.pdf
+- Presentation:
+  -  Victoria Car Accident - Group 9 Project 3 Presentation.pptx
 - static:
-  - charts.js
+  - images:
+    - car-crash.png
+    - Driving-road-in-Victoria.jpeg
+  - chartsfilter.js
   - cluster.js
+  - linecharts.js
+  - mapcircles.js
   - style.css
 - api.py
 - index.html
@@ -67,8 +74,9 @@ In this scenario, our team has built an interactive web application, displaying 
 - [About](#about)
     - [Part 1: Clean Data and Perform Exploratory Analysis](#part-1-clean-data-and-perform-exploratory-analysis)
     - [Part 2: Create the Project Database and Import Data](#part-2-create-the-project-database-and-import-data)
-    - [Part 3: Create the Flask Powered APIs](#part-3-create-the-flask-powered-apis)
+    - [Part 3: Create the Flask Powered API](#part-3-create-the-flask-powered-api)
     - [Part 4: Create the Web Application](#part-4-create-the-web-application)
+    - [Part 5: Deploy Website To Github Pages](#part-5-deploy-website-to-github-pages)
 - [Getting Started](#getting-started)
 - [Installing](#installing)
 - [Contributing](#contributing)
@@ -79,13 +87,18 @@ In this scenario, our team has built an interactive web application, displaying 
 ### Part 1: Clean Data and Perform Exploratory Analysis
 
 At the beginning, we used Jupyter Notebook to import six CSV files, that were cleaned, manipulated and merged to create three dataframes. The dataframes were then exported into csv files. Exploratory Analysis was performed to gain an understanding of the data and possible charts and maps to display on the final web application. The key insights we discovered were:
-1. With the exception of 2020, the number of road accidents has not changed since 2006, indicating that more needs to be done to improve this.
-2. Most fatal road accidents occur in rural victoria, whilst the majority of non fatal road accidents occur in urban settings.
-3. Age bracket 30-39 persons are most likely to be in fatal and non fatal accidents
-4. Fatal accidents are most likely to occur on a Saturday or Sunday depending on the year, whereas non fatal accidents are more likely to be on a weekday.
-5. March is the worst month generally for road accidents, fatal and non fatal.
-6. Most fatal accidents occur in 100 speed zone, which coincides with the the majority of fatal accidents occuring in rural victoria where the majority of roads have a 100+ speed zone.
-7. Most non fatal accidents occur in 60 speed zone, which coincides with the majority of non fatal accidents occuring in urban settings where the majority of roads have a 60 speed zone.
+1. With the exception of 2020, the number of road accidents per year has remained fairly constant since 2006, indicating that more needs to be done to improve road safety.
+2. March is the worst month generally for road accidents, fatal and non fatal.
+3. The majority of fatal road accidents occur in:
+    - rural victoria: 2,144 or 53.15%,
+    - 100+ speed zone, 
+    - 30-39 yr olds: 592,
+    - Saturday or Sunday (depending on the year).
+4. The majority of non-fatal road accidents occur in:
+    - urban settings: 326,757 or 67.31%
+    - 60 speed zone, 
+    - 30-39 yr olds: 84,047
+    - on a weekday.
 
 **Resource Files We Used:**
   - ACCIDENT.csv
@@ -132,12 +145,15 @@ At the beginning, we used Jupyter Notebook to import six CSV files, that were cl
 
 **Tools/Libraries We Imported:**
    - pandas library: for data manipulation and analysis
-NEED TO ADD HERE
+   - pathlib library: to create and manipulate file and directory paths easily
+   - matplotlib library: to create plots including line and bar charts
+   - geopandas library: to create maps and visualise geopspatial data
+   - shapely.geometry library: to represent specific locations on the Earth's surface (using longitude and latitude in this case)
 
 
 ### Part 2: Create the Project Database and Import Data
 
-In this section, using QuickDBD, we sketched an ERD to form a table schema of the three CSV files we created in Part 1 above. We identified the dependencies between each table (primary and foreign keys), their relationships (one-one/one-many, many-one) and the relevant datatypes for each column. We created a SQL database (project_db) in Postgres through pgAdmin. CSV files generated in Part 1 were imported into relevant tables using python code (to_sql.py) using python SQLAlchemy in Visual Studio Code. In order to create the connection between python and postgres, we installed psycopg2 (PostgreSQL adapter).
+In this section, using QuickDBD, we sketched an ERD to form a table schema of the three CSV files we created in Part 1 above. We identified the dependencies between each table (primary and foreign keys), their relationships (one-one/one-many, many-one) and the relevant datatypes for each column. We created a SQL database (project_db) in Postgres through pgAdmin. CSV files generated in Part 1 were imported into relevant tables using using python SQLAlchemy in Visual Studio Code (to_sql.py). In order to create the connection between python and postgres, we installed psycopg2 (PostgreSQL adapter).
 
 **ERD Diagram:**
  - ERD Diagram: QuickDBD-VIC ROAD ACCIDENTS DATA 1_1_2006 to 1_11_2020.png
@@ -153,14 +169,18 @@ In this section, using QuickDBD, we sketched an ERD to form a table schema of th
 
 **Tables loaded into project_db:**
 
-![Project_db screenshot](https://github.com/Nisloen/group-project-3/assets/132874272/677cc1da-07d3-4a3f-843a-3b232b0d806d)
+![image](https://github.com/Nisloen/group-project-3/assets/132874272/31351c90-83e8-4d41-865e-1d6c0c2aa638)
+
 
 **Tools/Libraries We Imported:**
    - pandas library: for data manipulation and analysis
    - sqlalchemy library: provides the SQL toolkit and Object-Relational Mapper (ORM) functionality. The create_engine function is to create a database engine to connect with the database in order to interact with the database, and perform operations such as SQL queries
 
-### Part 3: Create the Flask Powered APIs
-We then created an API with 2 routes http://127.0.0.1:5000/api/v1.0/accident and http://127.0.0.1:5000/api/v1.0/counts using flask in python (api.py) that uses the data in the database project_db. In order for the APIs to run, the version of SQLalchemy had to be 1.4.39.
+### Part 3: Create the Flask Powered API
+We then created an API with 2 routes http://127.0.0.1:5000/api/v1.0/accident and http://127.0.0.1:5000/api/v1.0/counts using flask in python that uses the data in the database project_db. In order for the API to run, the version of SQLalchemy had to be 1.4.39.
+
+**Our Python Script:**
+  - To create API: api.py
 
 **Tools/Libraries We Imported:**
    - pandas library: for data manipulation and analysis
@@ -168,7 +188,28 @@ We then created an API with 2 routes http://127.0.0.1:5000/api/v1.0/accident and
    - flask library: to create API and convert the data in SQL database to json format
 
 ### Part 4: Create the Web Application
-NEED TO ADD HERE
+Utilising javascript, html and css coding, we created the road accident web application. A separate javascript file was created for each of the four visualisations ie. cluster map, map by locality type, bar chart and line chart. Each of the javascript files call on a route from the API created in Part 3 to source the json formatted road accident data. Functions were created to then manipulate the data in order to create the different visualisations. The html file called on modules and libraries in order to create the visualisations, set the main layout of the webpage and links to the javascript files and the style.css file. The style.css file contained styling for different elements of the webpage eg. borders, shading, font size, height and width etc.
+
+**Our Javascript Files:**
+  - Horizontal Barchart with filters by measure and year: chartsfilter.js
+    - javascript libraries used: Plotly.js, D3.js
+  - Cluster Map of road accidents by location: cluster.js
+    - javascript libraries used: Leaflet.js, D3.js
+  - Linechart of road accidents by year split to fatal and nonfatal accidents: linecharts.js
+    - library used: Highcharts.js
+  - Map of location of road accidents, colour coded by locality type: mapcircles.js
+    - javascript libraries used: Leaflet.js, D3.js
+
+**Our Style Script:**
+  - style.css
+
+**Our HTML Script:**
+  - index.html
+
+### Part 5: Deploy Website To Github Pages
+Lastly, to deploy our website application containing the interactive dashboard, we following the steps outlined in the following link: https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site
+
+Our website: 
 
 ## Getting Started
 
@@ -214,7 +255,6 @@ NEED TO ADD HERE
 
 - Plotly.js website: (https://plotly.com/javascript/)
 - Highcharts.js website: (https://api.highcharts.com/highcharts/)
-- Anychart.js website: (https://www.anychart.com/)
 
 ## Sources
 
